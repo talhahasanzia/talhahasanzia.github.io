@@ -1,0 +1,80 @@
+# Site settings
+name: Talha's Blog
+title: Talha Zia
+description: A blog and journal about my experiences
+baseurl: "/jekyll-starter-blog" # the subpath for your site default is ""
+url: "https://sutanlab.js.org" # the base hostname & protocol in your domain (e.g: https://sutanlab.github.io)
+
+# Author Setting
+username: Talha Zia
+user_description: Learner, Coder & Team Builder
+user_title: Welcome to My Blog Site
+avatar_url: /jekyll-starter-blog/assets/img/sutan.jpeg
+email: talhahasanziat@hotmail.com
+github_username: talhahasanzia
+disqus_username: none
+facebook_username: talhahasanzia
+instagram_username: talhahasanzia
+twitter_username: talhahasanzia
+medium_username: none
+
+# Build settings
+timezone: Asia/Karachi
+published: true
+future: true
+show_drafts: false
+markdown: kramdown
+highlighter: rouge
+permalink: /:title/
+
+# html minify
+compress_html:
+  clippings: all
+  comments: all
+  endings: []
+  profile: false
+
+# Links to include in menu navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+  - title: Series
+    url: /series
+  - title: Tags
+    url: /tags
+  - title: About
+    url: /about
+
+# plugins
+plugins: [ jekyll-paginate-v2, jekyll-feed ]
+
+# exclude my node related stuff
+exclude: [
+  '.bundle',
+  '.publish',
+  '_drafts',
+  'node_modules',
+  'vendor',
+  'src',
+  'post.sh',
+  'deploy.sh',
+  'gulpfile.js',
+  'package.json',
+  'package-lock.json',
+  'Gemfile',
+  'Gemfile.lock',
+  'renovate.json',
+  'README.md'
+]
+
+# pagination config
+pagination:
+  enabled: true
+  debug: false
+  per_page: 5
+  sort_reverse: true
+  sort_field: 'date'
+  paginate_path: /page/:num/
+  permalink: '/page/:num/'
+  title: ':title'
