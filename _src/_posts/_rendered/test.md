@@ -1,5 +1,5 @@
 ---
-date: 31/01/2024
+date: 01/31/2024
 title: Work In Progress
 description: Work In Progress, Come back soon
 tags: ['none']

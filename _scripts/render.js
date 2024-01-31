@@ -54,12 +54,12 @@ const config = {
     collapseWhitespace: true
   },
   // !make sure it has the trailing slash /
-  baseUrl: 'https://padurean.github.io/markedista/',
+  baseUrl: 'https://talhahasanzia.github.io/markedista/',
   social: {
-    twitter: 'vpadure',
-    facebook: 'vpadurean',
-    github: 'padurean',
-    linkedin: 'vpadure'
+    twitter: 'talhahasanzia',
+    facebook: 'talhahasanzia',
+    github: 'talhahasanzia',
+    linkedin: 'talhahasanzia'
   },
   cssFiles: {
     main: { name: 'bundle-main.min.css', version: 1 },
@@ -508,9 +508,9 @@ function generateRssFeed() {
   log.info(`Generating feed in ${config.rssFeedDirPath} ...`.info)
   const now = new Date()
   const author = {
-    name: 'Valentin Padurean',
-    email: 'padureanvalentin@yahoo.com',
-    link: 'https://github.com/padurean'
+    name: 'Talha Zia',
+    email: 'talhahasanzia@hotmail.com',
+    link: 'https://github.com/talhahasanzia'
   }
   const feed = new Feed({
     title: 'Markedista',
@@ -519,7 +519,7 @@ function generateRssFeed() {
     link: config.baseUrl,
     image: `${config.baseUrl}${config.imagesDirPath}/${config.logoImgFileName}`,
     favicon: `${config.baseUrl}favicon.ico`,
-    copyright: `${now.getFullYear()}, Valentin Padurean`,
+    copyright: `${now.getFullYear()}, Talha Zia`,
     updated: now, // optional, default = today
     generator: 'Markedista', // optional, default = 'Feed for Node.js'
     feedLinks: {
