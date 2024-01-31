@@ -54,7 +54,7 @@ const config = {
     collapseWhitespace: true
   },
   // !make sure it has the trailing slash /
-  baseUrl: 'https://talhahasanzia.github.io/markedista/',
+  baseUrl: 'https://talhahasanzia.github.io/',
   social: {
     twitter: 'talhahasanzia',
     facebook: 'talhahasanzia',
