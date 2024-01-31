@@ -4,7 +4,7 @@
         <title>Markedista</title>
         <link>https://talhahasanzia.github.io/</link>
         <description>Static Blog Generator based on npm, marked and jsdom</description>
-        <lastBuildDate>Wed, 31 Jan 2024 14:39:03 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 31 Jan 2024 15:23:17 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Markedista</generator>
         <image>
@@ -17,6 +17,15 @@
         <category>Static Blog Generator</category>
         <category>Markdown</category>
         <atom:link href="https://talhahasanzia.github.io/feed/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Android - Unit Testing for Dummies]]></title>
+            <link>https://talhahasanzia.github.io/posts/unit-testing/</link>
+            <guid>https://talhahasanzia.github.io/posts/unit-testing/</guid>
+            <pubDate>Wed, 29 Jan 2020 19:00:00 GMT</pubDate>
+            <description><![CDATA[Read about how you can start your unit test journey and become a better developer.]]></description>
+            <content:encoded><![CDATA[Read about how you can start your unit test journey and become a better developer.]]></content:encoded>
+            <author>talhahasanzia@hotmail.com (Talha Zia)</author>
+        </item>
         <item>
             <title><![CDATA[Unconventional Raycasting]]></title>
             <link>https://talhahasanzia.github.io/posts/raycasting/</link>
