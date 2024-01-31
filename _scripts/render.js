@@ -660,27 +660,27 @@ function prepareIcons(document, headElem, homePath) {
   const appleIconElem = document.createElement('link')
   appleIconElem.setAttribute('rel', 'apple-touch-icon')
   appleIconElem.setAttribute('sizes', '180x180')
-  appleIconElem.setAttribute('href', `${homePath}/${config.imagesDirPath}/icon-180.png`)
+  appleIconElem.setAttribute('href', `${homePath}/${config.imagesDirPath}/favicon.ico`)
   headElem.append(appleIconElem)
 
   const msIconSElem = document.createElement('meta')
   msIconSElem.setAttribute('name', 'msapplication-square70x70logo')
-  msIconSElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/icon-70-no-bg.png`)
+  msIconSElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/favicon.ico`)
   headElem.append(msIconSElem)
 
   const msIconMElem = document.createElement('meta')
   msIconMElem.setAttribute('name', 'msapplication-square150x150logo')
-  msIconMElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/icon-150-no-bg.png`)
+  msIconMElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/favicon.ico`)
   headElem.append(msIconMElem)
 
   const msIconLElem = document.createElement('meta')
   msIconLElem.setAttribute('name', 'msapplication-square310x310logo')
-  msIconLElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/icon-310-no-bg.png`)
+  msIconLElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/faicon.ico`)
   headElem.append(msIconLElem)
 
   const msIconLRElem = document.createElement('meta')
   msIconLRElem.setAttribute('name', 'msapplication-wide310x150logo')
-  msIconLRElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/icon-310x150-no-bg.png`)
+  msIconLRElem.setAttribute('content', `${homePath}/${config.imagesDirPath}/favicon.ico`)
   headElem.append(msIconLRElem)
 
   const msTileColorElem = document.createElement('meta')
