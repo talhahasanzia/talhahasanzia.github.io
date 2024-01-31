@@ -4,7 +4,7 @@
         <title>Markedista</title>
         <link>https://padurean.github.io/markedista/</link>
         <description>Static Blog Generator based on npm, marked and jsdom</description>
-        <lastBuildDate>Wed, 31 Jan 2024 11:03:51 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 31 Jan 2024 11:22:59 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Markedista</generator>
         <image>
@@ -21,7 +21,7 @@
             <title><![CDATA[Work In Progress]]></title>
             <link>https://padurean.github.io/markedista/posts/test/</link>
             <guid>https://padurean.github.io/markedista/posts/test/</guid>
-            <pubDate>Tue, 11 Dec 2012 19:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[Work In Progress, Come back soon]]></description>
             <content:encoded><![CDATA[Work In Progress, Come back soon]]></content:encoded>
             <author>padureanvalentin@yahoo.com (Valentin Padurean)</author>
