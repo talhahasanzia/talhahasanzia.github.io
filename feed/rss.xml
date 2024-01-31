@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>Markedista</title>
-        <link>https://talhahasanzia.github.io/markedista/</link>
+        <link>https://talhahasanzia.github.io/</link>
         <description>Static Blog Generator based on npm, marked and jsdom</description>
-        <lastBuildDate>Wed, 31 Jan 2024 11:54:04 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 31 Jan 2024 13:50:09 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Markedista</generator>
         <image>
             <title>Markedista</title>
-            <url>https://talhahasanzia.github.io/markedista/images/markedista-logotype.png</url>
-            <link>https://talhahasanzia.github.io/markedista/</link>
+            <url>https://talhahasanzia.github.io/images/markedista-logotype.png</url>
+            <link>https://talhahasanzia.github.io/</link>
         </image>
         <copyright>2024, Talha Zia</copyright>
         <category>Tech</category>
@@ -19,11 +19,20 @@
         <atom:link href="https://talhahasanzia.github.io/feed/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Work In Progress]]></title>
-            <link>https://talhahasanzia.github.io/markedista/posts/test/</link>
-            <guid>https://talhahasanzia.github.io/markedista/posts/test/</guid>
+            <link>https://talhahasanzia.github.io/posts/test/</link>
+            <guid>https://talhahasanzia.github.io/posts/test/</guid>
             <pubDate>Tue, 30 Jan 2024 19:00:00 GMT</pubDate>
             <description><![CDATA[Work In Progress, Come back soon]]></description>
             <content:encoded><![CDATA[Work In Progress, Come back soon]]></content:encoded>
+            <author>talhahasanzia@hotmail.com (Talha Zia)</author>
+        </item>
+        <item>
+            <title><![CDATA[Unconventional Raycasting]]></title>
+            <link>https://talhahasanzia.github.io/posts/raycasting/</link>
+            <guid>https://talhahasanzia.github.io/posts/raycasting/</guid>
+            <pubDate>Mon, 14 Sep 2015 19:00:00 GMT</pubDate>
+            <description><![CDATA[Raycasting basics]]></description>
+            <content:encoded><![CDATA[Raycasting basics]]></content:encoded>
             <author>talhahasanzia@hotmail.com (Talha Zia)</author>
         </item>
     </channel>
