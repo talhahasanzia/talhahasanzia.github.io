@@ -1,5 +1,5 @@
 # Site settings
-name: T a l h a ' s Blog
+name: Blog
 title: Talha Zia
 description: A blog and journal about my experiences
 baseurl: "/jekyll-starter-blog" # the subpath for your site default is ""
