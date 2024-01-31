@@ -45,7 +45,7 @@ const config = {
   // channel categories used when generating the site feed xml
   siteCategories: ['Tech', 'Static Blog Generator', 'Markdown'],
   imagesDirPath: 'images',
-  logoImgFileName: 'markedista-logotype.png',
+  logoImgFileName: 'favicon.ico',
   enc: 'utf8',
   ignoreFiles: ['.gitkeep'],
   postsPerPage: 3,
