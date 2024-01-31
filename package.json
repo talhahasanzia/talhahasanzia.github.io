@@ -1,29 +1,38 @@
 {
-  "name": "jekyll-starter-blog",
-  "version": "1.0.0",
-  "description": "Jekyll Blog Starter Kit.",
-  "main": "gulpfile.js",
+  "name": "markedista",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Static site generator based on npm, marked, jsdom and yaml-front-matter",
+  "main": "_scripts/render.js",
   "scripts": {
-    "start": "export JEKYLL_ENV=development | gulp",
-    "build": "export JEKYLL_ENV=production | gulp build",
-    "deploy": "gulp deploy",
-    "preinstall": "gem install bundler; bundle install --path .bundle/packages"
+    "render": "node _scripts/render.js",
+    "minifycss": "node _scripts/minifycss.js",
+    "minifyjs": "node _scripts/minifyjs.js"
   },
-  "author": "Gading Nst.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/padurean/markedista.git"
+  },
+  "keywords": [
+    "static site generator markdown marked npm"
+  ],
+  "author": "Ogg (Valentin Padurean)",
   "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/padurean/markedista/issues"
+  },
+  "homepage": "https://github.com/padurean/markedista#readme",
   "devDependencies": {
-    "@babel/core": "7.6.0",
-    "@babel/preset-env": "7.6.0",
-    "@babel/register": "7.6.0",
-    "gulp": "4.0.2",
-    "gulp-autoprefixer": "7.0.0",
-    "gulp-babel": "8.0.0",
-    "gulp-concat": "2.6.1",
-    "gulp-gh-pages-will": "0.5.5",
-    "gulp-imagemin": "6.1.0",
-    "gulp-order": "1.2.0",
-    "gulp-plumber": "1.2.1",
-    "gulp-sass": "5.1.0",
-    "gulp-uglify": "3.0.2"
+    "clean-css": "^5.2.4",
+    "colors": "^1.4.0",
+    "del": "^7.0.0",
+    "html-minifier": "^4.0.0",
+    "jsdom": "^21.1.0",
+    "loglevel": "^1.8.0",
+    "marked": "^4.0.12",
+    "node-sass": "^8.0.0",
+    "pfeed": "^1.1.11",
+    "uglify-es": "^3.3.9",
+    "yaml-front-matter": "^4.1.1"
   }
 }
