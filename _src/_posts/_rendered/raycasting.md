@@ -15,6 +15,9 @@ It can be quite difficult when the angle at which ray to be casted is, say, 45 d
 
 Now first, we need an origin from which ray will be generated, at this moment we are assuming that our origin stays at a fixed position, but we can alter it the way we want. In my case, I have created a scene where a plane is aiming using raycast to determine the aim direction. The origin is the nose tip of the plane from where ray is generated. The plane is in a large box to make the raycasting work. One thing to remember here is that Physics.Raycast returns true only when raycast hits a collider, so we can not do this in open sky. Due to the enclosing box, no matter in which direction the ray is casted, it will be detected. The scene looks like this:
 
+![Alt text](../../../images/ray1.png?raw=true "raycast")
+
+
 It is not very fancy but it will do the trick. Now we need to have a look at our script. Open file named ‘BasicControl.cs’ in the assets folder of the project and you will see following code:
 
 ```
@@ -55,7 +58,14 @@ Debug.DrawLine(rayCastOrigin.transform.position, RayHit.point, Color.red);
 
 By doing this we will see a line drawn in the path of the ray, which will be visible in scene window. Run the project, click on the Aircraft , you will see the Script component where it shows Basic Control script and its public variables X , Y and Z.
 
+![Alt text](../../../images/ray2.png?raw=true "raycast")
+
+
+
 Change the values of these and see how it affects the angle of ray. Now we can adjust the direction of the ray at any angle required. The script can be edited to change the angle at every frame to give it a radar effect.  Or set the ray angle in desired direction and save x, y, z angles for other uses.
+
+![Alt text](../../../images/ray3.png?raw=true "raycast")
+
 
 
 [Download project.](https://github.com/talhahasanzia/RaycastTest)
