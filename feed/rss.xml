@@ -16,7 +16,7 @@
         <category>Tech</category>
         <category>Static Blog Generator</category>
         <category>Markdown</category>
-        <atom:link href="https://talhahasanzia.github.io/markedista/feed/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://talhahasanzia.github.io/feed/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Work In Progress]]></title>
             <link>https://talhahasanzia.github.io/markedista/posts/test/</link>
