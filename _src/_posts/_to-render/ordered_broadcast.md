@@ -121,6 +121,8 @@ public class OrderedBroadcastReceiver extends BroadcastReceiver {
 }
 ```
 
+A Kotlin specific [gist available here](https://gist.github.com/talhahasanzia/cd1d4de42b5141c00039da847653623d).
+
 ### When to Use Ordered Broadcasts
 Ordered broadcasts are useful when:
 
