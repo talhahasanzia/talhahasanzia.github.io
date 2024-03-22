@@ -38,7 +38,7 @@
         &lt;action android:name="com.example.ORDERED_BROADCAST" /&gt;
     &lt;/intent-filter&gt;
 &lt;/receiver&gt;
-</code></pre><p><em>Modifying broadcast data</em></p><p>Consider example where initial broadcast sender sends a message as <code>initialMessage</code> in the following example, receiver overwrites that data so when the next receiver gets this broadcast delivered, it will get updated data.</p><pre><code>// Sending an Ordered Broadcast with initial data
+</code></pre><h4 id="modifying-broadcast-data">Modifying broadcast data</h4><p>Consider example where initial broadcast sender sends a message as <code>initialMessage</code> in the following example, receiver overwrites that data so when the next receiver gets this broadcast delivered, it will get updated data.</p><pre><code>// Sending an Ordered Broadcast with initial data
 String initialMessage = "Hello from the sender!";
 Intent intent = new Intent("com.example.ORDERED_BROADCAST");
 intent.putExtra("message", initialMessage);
@@ -51,7 +51,7 @@ sendOrderedBroadcast(intent, null);
             // Retrieve the initial message from the broadcast
             String initialMessage = intent.getStringExtra("message");
 
-            // Log.d initialMessage : Hello from the sender!-Modified
+            // Log.d initialMessage : Hello from the sender!
 
 
             // Modify the message

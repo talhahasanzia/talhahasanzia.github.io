@@ -69,7 +69,7 @@ Make sure to register `MyOrderedBroadcastReceiver` in the manifest file. Also, e
 </receiver>
 ```
 
-*Modifying broadcast data*
+#### Modifying broadcast data
 
 Consider example where initial broadcast sender sends a message as `initialMessage` in the following example, receiver overwrites that data so when the next receiver gets this broadcast delivered, it will get updated data.
 
@@ -90,7 +90,7 @@ public class OrderedBroadcastReceiver extends BroadcastReceiver {
             // Retrieve the initial message from the broadcast
             String initialMessage = intent.getStringExtra("message");
 
-            // Log.d initialMessage : Hello from the sender!-Modified
+            // Log.d initialMessage : Hello from the sender!
 
 
             // Modify the message
