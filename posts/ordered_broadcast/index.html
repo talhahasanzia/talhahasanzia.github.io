@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name="description" content="Special broadcasts that can be prioritized, stopped propagation and even modified for next receiver."><meta name="keywords" content="android, broadcasts, orderedbroadcast, receivers"><meta name="author" content="talhahasanzia"><meta property="article:author" content="talhahasanzia"><meta property="fb:app_id" content="137003210502238"><title>Android - Understanding Ordered Broadcasts</title><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@talhahasanzia"><meta property="og:type" content="article"><link rel="canonical" href="https://talhahasanzia.github.io/posts/ordered_broadcast/"><meta property="og:url" content="https://talhahasanzia.github.io/posts/ordered_broadcast/"><meta property="og:title" content="Android -  Understanding Ordered Broadcasts"><meta name="twitter:title" content="Android -  Understanding Ordered Broadcasts"><meta property="og:description" content="Special broadcasts that can be prioritized, stopped propagation and even modified for next receiver."><meta name="twitter:description" content="Special broadcasts that can be prioritized, stopped propagation and even modified for next receiver."><meta property="og:image" content="https://talhahasanzia.github.io/images/favicon.ico"><meta property="og:image:secure_url" content="https://talhahasanzia.github.io/images/favicon.ico"><meta name="twitter:image" content="https://talhahasanzia.github.io/images/favicon.ico"><meta property="article:tag" content="android"><meta property="article:tag" content="broadcasts"><meta property="article:tag" content="orderedbroadcast"><meta property="article:tag" content="receivers"><link rel="shortcut icon" href="../../favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="../../images/favicon.ico"><meta name="msapplication-square70x70logo" content="../../images/favicon.ico"><meta name="msapplication-square150x150logo" content="../../images/favicon.ico"><meta name="msapplication-square310x310logo" content="../../images/faicon.ico"><meta name="msapplication-wide310x150logo" content="../../images/favicon.ico"><meta name="msapplication-TileColor" content="#ffffff"><link rel="alternate" type="application/rss+xml" title="Talha's Blog" href="https://talhahasanzia.github.io/feed/rss.xml"><link rel="stylesheet" href="../../bundle-post.min.css?1"></head><body><header><div class="scroll-progress-container"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div><a href="../../" class="btn-go-home">Blog</a><div class="hamburger hamburger--spring-r"><div class="hamburger-box"><div class="hamburger-inner"></div></div></div><div id="nav-main" class="nav-main" style="display: none;"><ul><li><a href="../../" class="home-page-link">Home</a></li><li><a href="../../about/" class="about-page-link">About</a></li><li class="social-icon-links-in-menu"><a href="https://github.com/talhahasanzia" title="GitHub"><img class="github-icon-link" alt="GitHub" src="../../images/github-square-white.svg"></a><a href="https://twitter.com/talhahasanzia" title="Twitter"><img class="twitter-icon-link" alt="Twitter" src="../../images/twitter-square-white.svg"></a><a href="https://www.linkedin.com/in/talhahasanzia/" title="LinkedIn"><img class="linkedin-icon-link" alt="LinkedIn" src="../../images/linkedin-white.svg"></a><a href="https://www.facebook.com/talhahasanzia" title="Facebook"><img class="facebook-icon-link" alt="Facebook" src="../../images/facebook-square-white.svg"></a></li></ul></div></header><article class="full-post"><header class="post-header"><img class="post-thumbnail hidden" src=""><h1 id="post-title" class="post-title">Android - Understanding Ordered Broadcasts</h1><div class="post-date-wrapper invisible"><span class="post-date-icon-wrapper">&nbsp;</span> <time id="post-date" class="post-date" datetime="03/22/2024">03/22/2024</time> <span class="post-ago">&nbsp;</span></div><img class="post-cover hidden" src=""></header><section id="post-body" class="post-body"><h3 id="understanding-ordered-broadcasts">Understanding Ordered Broadcasts</h3><p>Broadcasts in Android are powerful tools for inter-component communication, allowing different parts of an application or even different applications to send and receive messages. Among the types of broadcasts, ordered broadcasts stand out as a mechanism for ensuring a specific order of receiver execution and enabling receivers to manipulate the propagation of the broadcast. In this article, we'll delve into the concept of ordered broadcasts, provide examples, and compare them with normal broadcasts.</p><h3 id="ordered-broadcasts-what-are-they">Ordered Broadcasts: What Are They?</h3><p>Ordered broadcasts are a type of broadcast in Android where the order of receiver execution is maintained. When an ordered broadcast is sent, receivers are invoked one at a time based on their priority levels. Each receiver has the option to abort the broadcast or pass it on to the next receiver.</p><h3 id="in-action">In Action</h3><p>Now, let's see how to send an ordered broadcast:</p><pre><code>public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Create the intent for the ordered broadcast
+        Intent orderedBroadcastIntent = new Intent("com.example.ORDERED_BROADCAST");
+        orderedBroadcastIntent.putExtra("message", "Hello from MainActivity!");
+
+        // Send the ordered broadcast
+        sendOrderedBroadcast(orderedBroadcastIntent, null);
+    }
+}
+</code></pre><p>And, how we can abort the broadcast, so that it is not delivered to any other receiver anymore:</p><pre><code>public class MyOrderedBroadcastReceiver extends BroadcastReceiver {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        // Receive the broadcast
+        String action = intent.getAction();
+        if ("com.example.ORDERED_BROADCAST".equals(action)) {
+            // Log that the receiver has received the broadcast
+            String message = intent.getStringExtra("message");
+            System.out.println("Ordered Receiver Received: " + message);
+
+            // Do some processing or action here
+            
+            // Example of aborting the broadcast
+            abortBroadcast(); // This will prevent further receivers from receiving the broadcast
+            // Log that the broadcast has been aborted
+            System.out.println("Ordered Receiver Aborted Broadcast");
+        }
+    }
+}
+</code></pre><p>In this <code>MainActivity</code> class, we create an intent for the ordered broadcast with the action <code>"com.example.ORDERED_BROADCAST"</code>. We also put an extra message in the intent. Then, we send this ordered broadcast using <code>sendOrderedBroadcast()</code> method.</p><p>With this setup, when <code>MainActivity</code> sends the ordered broadcast, <code>MyOrderedBroadcastReceiver</code> will receive it. In the <code>MyOrderedBroadcastReceiver</code>, it will log the message received and then abort the broadcast. As a result, no other receivers registered to receive this ordered broadcast will receive it.</p><p>Make sure to register <code>MyOrderedBroadcastReceiver</code> in the manifest file. Also, ensure appropriate permissions are set if required.</p><pre><code>&lt;receiver android:name=".MyOrderedBroadcastReceiver"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.example.ORDERED_BROADCAST" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre><p><em>Modifying broadcast data</em></p><p>Consider example where initial broadcast sender sends a message as <code>initialMessage</code> in the following example, receiver overwrites that data so when the next receiver gets this broadcast delivered, it will get updated data.</p><pre><code>// Sending an Ordered Broadcast with initial data
+String initialMessage = "Hello from the sender!";
+Intent intent = new Intent("com.example.ORDERED_BROADCAST");
+intent.putExtra("message", initialMessage);
+sendOrderedBroadcast(intent, null);
+</code></pre><p>Receiver manipulating data:</p><pre><code>public class OrderedBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if ("com.example.ORDERED_BROADCAST".equals(action)) {
+            // Retrieve the initial message from the broadcast
+            String initialMessage = intent.getStringExtra("message");
+
+            // Log.d initialMessage : Hello from the sender!-Modified
+
+
+            // Modify the message
+            String modifiedMessage = initialMessage.toUpperCase() + "-Modified; // Example modification
+
+            // Pass the modified message to the next receiver
+            setResultData(modifiedMessage);
+        }
+    }
+}
+</code></pre><p>Now if the next receiver receives broadcast and prints the data it will get updated value:</p><pre><code>public class OrderedBroadcastReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        String action = intent.getAction();
+        if ("com.example.ORDERED_BROADCAST".equals(action)) {
+            // Retrieve the initial message from the broadcast
+            String modifiedMessage = intent.getStringExtra("message");
+
+            // Log.d modifiedMessage : Hello from the sender!-Modified
+
+            // This receiver can also abort further deliveries
+            abortBroadcast();
+        }
+    }
+}
+</code></pre><h3 id="when-to-use-ordered-broadcasts">When to Use Ordered Broadcasts</h3><p>Ordered broadcasts are useful when:</p><ul><li>A specific order of receiver execution is required.</li><li>Receivers need to manipulate or filter the broadcast before passing it on.</li><li>It's necessary to ensure that only one receiver handles the broadcast.</li></ul><h3 id="comparison-with-normal-broadcast">Comparison with normal broadcast</h3><p>While both types of broadcasts serve the purpose of inter-component communication, ordered broadcasts offer distinct advantages over normal broadcasts, especially when precise control and sequencing are paramount.</p><p>Normal broadcasts (<code>sendBroadcast()</code>) are delivered to all registered receivers simultaneously and independently, without any predefined order or control over propagation. On the other hand, ordered broadcasts (<code>sendOrderedBroadcast()</code>) enable receivers to prioritize their execution and influence the delivery of the broadcast to subsequent receivers through methods like <code>abortBroadcast()</code>.</p><h3 id="conclusion">Conclusion</h3><p>Ordered broadcasts in Android empower developers with the ability to orchestrate the delivery of messages among components in a controlled and sequenced manner. By leveraging the structured delivery mechanism of ordered broadcasts, developers can ensure precise handling of events and streamline the execution flow within their applications.</p><p>In scenarios where sequential execution or manipulation of broadcast propagation is required, ordered broadcasts emerge as a powerful tool in the Android developer's arsenal.</p><h3 id="further-readings">Further Readings</h3><p><a href="https://developer.android.com/develop/background-work/background-tasks/broadcasts">Broadcasts Overview</a></p><p><a href="https://developer.android.com/reference/android/content/BroadcastReceiver">Broadcast Receiver</a></p><p><a href="https://developer.android.com/reference/android/content/Context#sendOrderedBroadcast(android.content.Intent,%20java.lang.String,%20java.lang.String,%20android.content.BroadcastReceiver,%20android.os.Handler,%20int,%20java.lang.String,%20android.os.Bundle)">Ordered Broadcast</a></p><p><a href="https://developer.android.com/reference/android/content/BroadcastReceiver#setResult(int,%20java.lang.String,%20android.os.Bundle)">Modifying Broadcast with setResult</a></p></section></article><section id="tags-section" class="tags-section"><div id="share-btns-container" class="share-btns-container"><a id="btn-share-twitter" href="https://twitter.com/share?url=https://talhahasanzia.github.io/posts/ordered_broadcast/&amp;text=%0AAndroid%20-%20%20Understanding%20Ordered%20Broadcasts%0A&amp;hashtags=android%2Cbroadcasts%2Corderedbroadcast%2Creceivers" target="_blank" title="Share on Twitter"><img src="../../images/share-twitter.svg" alt="Twitter"> </a><a id="btn-share-facebook" href="https://www.facebook.com/sharer.php?u=https://talhahasanzia.github.io/posts/ordered_broadcast/" target="_blank" title="Share on Facebook"><img src="../../images/share-facebook.svg" alt="Facebook"> </a><a id="btn-share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://talhahasanzia.github.io/posts/ordered_broadcast/" target="_blank" title="Share on LinkedIn"><img src="../../images/share-linkedin.svg" alt="LinkedIn"> </a><a id="btn-share-copy-link" href="" target="_blank" title="Copy link to clipboard"><img src="../../images/share-link.svg" alt="Copy Link"> </a><span id="copy-link-tooltip" class="copy-link-tooltip" style="display: none;">copied</span></div><div id="tags-container" class="tags-container on-full-post"><a href="../../tags/?tags=android"><span class="grey-text">#</span>android</a> <a href="../../tags/?tags=broadcasts"><span class="grey-text">#</span>broadcasts</a> <a href="../../tags/?tags=orderedbroadcast"><span class="grey-text">#</span>orderedbroadcast</a> <a href="../../tags/?tags=receivers"><span class="grey-text">#</span>receivers</a></div><div class="clear-floats">&nbsp;</div></section><section id="page-nav" class="page-nav invisible"><a id="btn-older-post" class="btn with-icon left disabled" href="#"><span class="arrow-icon">&nbsp;</span> Older</a> <a id="btn-newer-post" class="btn with-icon right disabled" href="#">Newer <span class="arrow-icon">&nbsp;</span></a></section><section id="fb-comments-section" class="fb-comments-section"><div class="fb-comments" data-href="https://talhahasanzia.github.io/posts/ordered_broadcast/" data-numposts="10"></div><div id="fb-root"></div><script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0&appId=137003210502238&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script></section><section id="related-and-newer-posts" class="related-and-newer-posts"><input type="hidden" name="tags" id="tags-input" value="android,broadcasts,orderedbroadcast,receivers"> <input type="hidden" name="post-id" id="post-id-input" value="ordered_broadcast"><section id="other-post-summary-template-section" class="other-post-summary-template-section"><article class="post-summary"><a href="" class="post-link"><img class="post-thumbnail" src=""></a><a href="" class="post-link"><h1 class="post-title"></h1></a><div class="post-date-wrapper invisible"><span class="post-date-icon-wrapper">&nbsp;</span> <time class="post-date" datetime=""></time> <span class="post-ago"></span></div><a href="" class="post-link"><img class="post-cover" src=""></a><p class="post-description"></p><a class="post-read-more" href="#">▸ read more</a><div class="post-tags tags-container"></div><div class="clear-floats">&nbsp;</div></article></section><section id="related-posts" class="related-posts" style="display: none;"><header><span class="grey-text">▼</span> Related</header></section><section id="newest-posts" class="newest-posts" style="display: none;"><header><span class="grey-text">▼</span> Latest</header></section></section><div class="clear-floats">&nbsp;</div><footer><a rel="alternate" type="application/rss+xml" href="https://talhahasanzia.github.io/feed/rss.xml" class="subscribe-via-rss" title="Subscribe via RSS"><img src="../../images/rss.svg" alt="Subscribe via RSS"></a><div class="social-icon-links"><a href="https://github.com/talhahasanzia" title="GitHub"><img class="github-icon-link" alt="GitHub" src="../../images/github-square.svg"></a><a href="https://twitter.com/talhahasanzia" title="Twitter"><img class="twitter-icon-link" alt="Twitter" src="../../images/twitter-square.svg"></a><a href="https://www.linkedin.com/in/talhahasanzia/" title="LinkedIn"><img class="linkedin-icon-link" alt="LinkedIn" src="../../images/linkedin.svg"></a><a href="https://www.facebook.com/talhahasanzia" title="Facebook"><img class="facebook-icon-link" alt="Facebook" src="../../images/facebook-square.svg"></a></div><div class="clear-floats">&nbsp;</div></footer><script type="text/javascript" src="../../bundle-post.min.js?1"></script></body></html>
