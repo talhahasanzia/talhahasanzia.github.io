@@ -112,7 +112,7 @@ public class OrderedBroadcastReceiver extends BroadcastReceiver {
             // Retrieve the initial message from the broadcast
             String modifiedMessage = intent.getStringExtra("message");
 
-            // Log.d modifiedMessage : Hello from the sender!-Modified
+            // Log.d modifiedMessage : HELLO FROM THE SENDER!-Modified
 
             // This receiver can also abort further deliveries
             abortBroadcast();
@@ -120,6 +120,8 @@ public class OrderedBroadcastReceiver extends BroadcastReceiver {
     }
 }
 ```
+
+A Kotlin specific [gist available here](https://gist.github.com/talhahasanzia/cd1d4de42b5141c00039da847653623d).
 
 ### When to Use Ordered Broadcasts
 Ordered broadcasts are useful when:
