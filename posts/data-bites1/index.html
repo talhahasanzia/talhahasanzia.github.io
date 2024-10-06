@@ -156,10 +156,10 @@ plt.show()
             <p>Interestingly, we couldnt find much. That brings us to a question, is there really any team that stayed
                 in top 10 since rankings?</p>
             <p>The answer is No.</p>
-            <p>Lets broader the scale to 25 teams, and see if there are teams that never ranked below 25 since it seem
-                hard to find team that have retained above 10 ranks.</p>
+            <p>Lets broaden the scale to 25 teams, and see if there are teams that never have ranked below 25 since it seem
+                hard to find a team that have retained above 10 rank.</p>
             <p>Change the following piece of code in previous code sample:</p>
-            <pre><code>countries_never_below_10 = df.groupby('country_full').filter(lambda x: x['rank'].max() &lt;= 10)['country_full'].unique()
+            <pre><code>countries_never_below_10 = df.groupby('country_full').filter(lambda x: x['rank'].max() &lt;= 25)['country_full'].unique()
 </code></pre>
             <h2 id="visualizing-and-analyzing-the-data-key-insights">Visualizing and Analyzing the Data: Key Insights
             </h2>
