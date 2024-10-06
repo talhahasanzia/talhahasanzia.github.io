@@ -1,0 +1,123 @@
+---
+date: 10/04/2024
+title: Data Bites 01 -  The teams that never fell below top 10 FIFA rankings
+description: Data bites is a fun take on data where we find interesting facts
+tags: ['data', 'python','datavisualization', 'mathplotlib']
+---
+
+# Data Bites 01: The teams that never fell below top 10 FIFA rankings
+
+The primary question we wanted to explore was simple: is there any team that has consistently remained in the top 10 of the FIFA rankings since they started? We were curious if any team maintained such consistent performance, and this could be easily answered with a data visualization experiment.
+
+## The Dataset: FIFA Team Rankings from Kaggle
+
+We found a free dataset on [Kaggle](https://www.kaggle.com/datasets?search=fifa+rankings) that contained FIFA team rankings from 1993 to 2018. This dataset provided all the information We needed to answer the question. It was structured with dates and ranks for every team, making it easy to filter and visualize the data.
+### Data Structure: Rankings of All Teams from 1993 to 2018
+
+The dataset contained rankings for every team between 1993 and 2018. Each entry had a date, team name, and their ranking for that period. With this structure, we could easily track teams' ranks over time and create a visual representation to analyze which teams performed the best.
+
+## Code:
+
+Prerequisites: `Python, mathplotlib, seaborn`
+
+```
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+
+# Load the dataset from a CSV file
+df = pd.read_csv('rankings.csv')
+
+# Convert the rank_date column to datetime format
+df['rank_date'] = pd.to_datetime(df['rank_date'])
+
+# Group by country and filter out those who were ever ranked greater than 10
+countries_never_below_10 = df.groupby('country_full').filter(lambda x: x['rank'].max() <= 10)['country_full'].unique()
+
+# Filter the dataset to only include these countries
+filtered_df = df[df['country_full'].isin(countries_never_below_10)]
+
+# Sort by rank_date
+filtered_df = filtered_df.sort_values(by='rank_date')
+
+# Initialize the plot
+fig, ax = plt.subplots(figsize=(16, 8))
+
+# Set up the basic plot elements
+ax.set_title('Animated Rank Trend of Countries Never Below Rank 10', fontsize=16)
+ax.set_xlabel('Year', fontsize=14)
+ax.set_ylabel('Rank', fontsize=14)
+
+# Customize the y-axis
+max_rank = 10  # Maximum rank value you want to display
+ax.set_ylim(max_rank, 0)  # Flip the y-axis with 0 on top and max rank at the bottom
+ax.set_yticks(range(0, max_rank + 1))  # Show ranks from 1 to max_rank
+
+# Create a color palette for the countries
+palette = sns.color_palette("hsv", len(countries_never_below_10))
+
+# Define a dictionary to store the line objects for each country
+lines = {country: ax.plot([], [], label=country, color=palette[i])[0] for i, country in enumerate(countries_never_below_10)}
+
+# Set up legend
+ax.legend()
+
+# Update function for animation
+def update(frame):
+    current_date = filtered_df['rank_date'].unique()[frame]
+    data_until_now = filtered_df[filtered_df['rank_date'] <= current_date]
+    
+    for country, line in lines.items():
+        country_data = data_until_now[data_until_now['country_full'] == country]
+        line.set_data(country_data['rank_date'], country_data['rank'])
+    
+    ax.set_xlim(filtered_df['rank_date'].min(), filtered_df['rank_date'].max())
+    return lines.values()
+
+# Number of frames in the animation corresponds to the number of unique rank_date values
+num_frames = len(filtered_df['rank_date'].unique())
+
+# Create the animation and make it smoother by increasing frames and reducing interval
+ani = FuncAnimation(fig, update, frames=num_frames, repeat=False, interval=16)  # Set interval to 100ms for smoother animation
+
+# Display the animation
+plt.show()
+
+```
+
+Interestingly, we couldnt find much. That brings us to a question, is there really any team that stayed in top 10 since rankings?
+
+The answer is No.
+
+Lets broader the scale to 25 teams, and see if there are teams that never ranked below 25 since it seem hard to find team that have retained above 10 ranks.
+
+Change the following piece of code in previous code sample:
+
+```
+countries_never_below_10 = df.groupby('country_full').filter(lambda x: x['rank'].max() <= 10)['country_full'].unique()
+```
+
+
+## Visualizing and Analyzing the Data: Key Insights
+
+So we found only 5 teams that have been able to retain top 25 rankings, Brazil came close to retaining top 10 but fell below around 2012-2014 period.
+
+![rankings](https://raw.githubusercontent.com/talhahasanzia/data-bites/refs/heads/main/fifa_rankings/rankings.png)
+
+- Germany
+- Italy
+- Brazil
+- Argentina
+- Spain
+
+- Italy has never been below 21. 
+- Top rankings are dominated by European countries
+- Brazil and Argentina were only teams outside Europe that never fell below rank 25.
+- Brazil stayed longest in top 10 rankings from 1992 to July 2012. 
+
+## Conclusion
+
+In just a few minutes, we was able to use free tools, data, and a bit of coding help to answer an interesting question about FIFA team rankings. This is just one example of how anyone can perform a quick and fun data experiment with minimal effort.
+
+Stay tuned for more **Data Bites**!
