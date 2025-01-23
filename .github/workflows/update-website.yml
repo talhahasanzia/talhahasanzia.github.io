@@ -1,0 +1,53 @@
+name: Update HTML with APK Link
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  update-html:
+    name: Update HTML File with APK Link
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Extract Release Information
+      - name: Extract Release Information
+        id: release-info
+        run: |
+          if [ "${{ github.event.release.assets }}" = "[]" ]; then
+            echo "No assets found in the release. Exiting..."
+            exit 1
+          fi
+          APK_URL="${{ github.event.release.assets[0].browser_download_url }}"
+          echo "APK URL: $APK_URL"
+          echo "apk_url=$APK_URL" >> $GITHUB_ENV
+
+      # Step 3: Update the HTML file
+      - name: Update HTML File
+        run: |
+          APK_URL=$APK_URL
+          FILE="apps/glucochart/index.html"
+          echo "Updating $FILE with APK URL: $APK_URL"
+
+          # Replace the `onclick` attribute with the new APK URL
+          sed -i "s|onclick=\"window.location.href='.*';\"|onclick=\"window.location.href='$APK_URL';\"|g" $FILE
+
+          # Display the modified file (for debugging purposes)
+          cat $FILE
+
+      # Step 4: Commit and Push Changes
+      - name: Commit and Push Changes
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add apps/glucochart/index.html
+          git commit -m "Update APK link in index.html for release ${{ github.event.release.tag_name }}"
+          git push "https://${PAT_TOKEN}@github.com/${{ github.repository }}.git" HEAD:main
