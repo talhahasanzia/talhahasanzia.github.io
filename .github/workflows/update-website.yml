@@ -1,31 +1,47 @@
-name: Update HTML with APK Link
+name: Update HTML with APK Link After Asset Upload
 
 on:
   release:
     types:
+      - published
       - created
 
 jobs:
-  update-html:
-    name: Update HTML File with APK Link
+  wait-for-asset:
+    name: Wait for APK Upload and Update HTML
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
+      # Step 1: Wait for the APK to be uploaded
+      - name: Wait for APK Asset
+        id: wait-for-asset
+        run: |
+          RELEASE_ID=${{ github.event.release.id }}
+          REPO=${{ github.repository }}
+          echo "Waiting for APK upload on release $RELEASE_ID in $REPO..."
+
+          # Retry logic: wait up to 5 minutes (30 attempts, 10 seconds apart)
+          for i in {1..30}; do
+            ASSETS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/$REPO/releases/$RELEASE_ID" | jq -r '.assets')
+
+            if [ "$ASSETS" != "[]" ] && echo "$ASSETS" | grep -q ".apk"; then
+              APK_URL=$(echo "$ASSETS" | jq -r '.[] | select(.name | endswith(".apk")) | .browser_download_url')
+              echo "APK detected: $APK_URL"
+              echo "apk_url=$APK_URL" >> $GITHUB_ENV
+              exit 0
+            fi
+
+            echo "No APK uploaded yet. Retrying in 10 seconds... ($i/30)"
+            sleep 10
+          done
+
+          echo "Timeout: APK not uploaded within 5 minutes."
+          exit 1
+
+      # Step 2: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
-
-      # Step 2: Extract Release Information
-      - name: Extract Release Information
-        id: release-info
-        run: |
-          if [ "${{ github.event.release.assets }}" = "[]" ]; then
-            echo "No assets found in the release. Exiting..."
-            exit 1
-          fi
-          APK_URL="${{ github.event.release.assets[0].browser_download_url }}"
-          echo "APK URL: $APK_URL"
-          echo "apk_url=$APK_URL" >> $GITHUB_ENV
 
       # Step 3: Update the HTML file
       - name: Update HTML File
