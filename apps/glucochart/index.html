@@ -24,6 +24,8 @@
             border-radius: 12px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
+            width: 80%; /* Adjust width of the container */
+            max-width: 400px; /* Limit max width */
         }
 
         h1 {
@@ -60,14 +62,31 @@
             transform: translateY(1px);
             box-shadow: none;
         }
+
+        /* Styling for the image */
+        .image-container {
+            margin-bottom: 20px; /* Margin below the image */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image responsive */
+            max-width: 200px; /* Set a max width */
+            height: auto;
+            border-radius: 12px; /* Rounded corners for the image */
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Image Container -->
+        <div class="image-container">
+            <img src="image.png" alt="App Image">
+        </div>
+
         <h1>Download Glucochart App</h1>
-        <p>Track your blood sugar effortlessly. Get a simple chart to print or share with your medical professional.</p> 
-<h3>Free. Easy. Useful</h3>
-<p>Get started by downloading now!</p>
+        <p>Track your blood sugar effortlessly. Get a simple chart to print or share with your medical professional.</p>
+        <h3>Free. Easy. Useful</h3>
+        <p>Get started by downloading now!</p>
         <button id="apk-link" class="download-button" onclick="window.location.href='https://github.com/talhahasanzia/talhahasanzia.github.io/releases/download/v20250123093948/app-debug.apk';">Download</button>
     </div>
 </body>
