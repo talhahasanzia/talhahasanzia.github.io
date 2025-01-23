@@ -12,48 +12,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Wait for the APK to be uploaded
-      - name: Wait for APK Asset
-        id: wait-for-asset
+      # Step 1: Wait for a fixed delay (e.g., 3 minutes) after the release creation
+      - name: Wait for APK Upload Delay
         run: |
-          RELEASE_ID=${{ github.event.release.id }}
-          REPO=${{ github.repository }}
-          echo "Waiting for APK upload on release $RELEASE_ID in $REPO..."
-
-          # Retry logic: wait up to 5 minutes (30 attempts, 10 seconds apart)
-          for i in {1..30}; do
-            ASSETS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/$REPO/releases/$RELEASE_ID" | jq -r '.assets')
-
-            if [ "$ASSETS" != "[]" ] && echo "$ASSETS" | grep -q ".apk"; then
-              APK_URL=$(echo "$ASSETS" | jq -r '.[] | select(.name | endswith(".apk")) | .browser_download_url')
-              echo "APK detected: $APK_URL"
-              echo "apk_url=$APK_URL" >> $GITHUB_ENV
-              exit 0
-            fi
-
-            echo "No APK uploaded yet. Retrying in 10 seconds... ($i/30)"
-            sleep 10
-          done
-
-          echo "Timeout: APK not uploaded within 5 minutes."
-          exit 1
+          echo "Waiting for 3 minutes to allow APK upload..."
+          sleep 180  # 3 minutes delay
 
       # Step 2: Checkout the repository
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 3: Update the HTML file
-      - name: Update HTML File
+      # Step 3: Continue with the existing APK check and update HTML
+      - name: Wait for APK Asset and Update HTML
         run: |
-          APK_URL=$APK_URL
+          RELEASE_ID=${{ github.event.release.id }}
+          REPO=${{ github.repository }}
+          echo "Checking APK upload in release $RELEASE_ID in $REPO..."
+
+          # Check if the APK has been uploaded (retry logic can still be used here)
+          ASSETS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/$REPO/releases/$RELEASE_ID" | jq -r '.assets')
+
+          if [ "$ASSETS" != "[]" ] && echo "$ASSETS" | grep -q ".apk"; then
+            APK_URL=$(echo "$ASSETS" | jq -r '.[] | select(.name | endswith(".apk")) | .browser_download_url')
+            echo "APK detected: $APK_URL"
+            echo "apk_url=$APK_URL" >> $GITHUB_ENV
+          else
+            echo "APK not found. Exiting."
+            exit 1
+          fi
+
+          # Checkout repository and update HTML as in your existing code
           FILE="apps/glucochart/index.html"
           echo "Updating $FILE with APK URL: $APK_URL"
-
-          # Replace the `onclick` attribute with the new APK URL
           sed -i "s|onclick=\"window.location.href='.*';\"|onclick=\"window.location.href='$APK_URL';\"|g" $FILE
-
-          # Display the modified file (for debugging purposes)
           cat $FILE
 
       # Step 4: Commit and Push Changes
