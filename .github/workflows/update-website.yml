@@ -3,7 +3,6 @@ name: Update HTML with APK Link After Asset Upload
 on:
   release:
     types:
-      - published
       - created
 
 jobs:
