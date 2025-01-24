@@ -1,5 +1,5 @@
 ---
-date: 24/01/2025
+date: 01/24/2025
 title: Business Rule Engines 101 - What, How, When Where?
 description: A discussion on Business Rule engines and their role in software engineering
 tags: ['data', 'java','businessrules', 'bre']
