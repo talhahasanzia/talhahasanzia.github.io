@@ -1017,6 +1017,60 @@ input[type=checkbox] {
         display: block;
       }
     }
+    .switch-container {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            padding: 2px;
+            position: relative;
+            width: 120px;
+            height: 36px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .switch-container input {
+            display: none;
+        }
+
+        .switch-label {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #757575;
+            cursor: pointer;
+            position: relative; /* Ensure it stays above the slider */
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .switch-container input:checked + .switch-label {
+            color: #ffffff;
+        }
+
+        .slider {
+            position: absolute;
+            width: 50%;
+            height: 32px;
+            background-color: #0fbf3e;
+            border-radius: 16px;
+            top: 2px;
+            left: 2px;
+            z-index: 1; /* Ensure it stays behind the labels */
+            transition: transform 0.3s ease;
+        }
+
+        .switch-container input#used:checked ~ .slider {
+            transform: translateX(56px);
+        }
+
+        .switch-container input#new:checked ~ .slider {
+            transform: translateX(0);
+        }
+
     </style>
 </head>
 <body>
@@ -1213,19 +1267,14 @@ input[type=checkbox] {
 		</div>
 </div>
 <div class="scontainer">
-  <!-- New/Used Switch -->
-  <div class="new-used-switch" id="NewUsedSwitch">
-    <!-- Remove radio buttons here -->
-    <div class="atoggle-button-cover">
-        <div class="abutton-cover">
-            <div class="abutton b2" id="abutton-11">
-                <input type="checkbox" class="acheckbox" id="aswitchCheckbox" />
-                <div class="aknobs">
-                    <span></span>
-                </div>
-                <div class="alayer"></div>
-            </div>
-        </div>
+    <div class="switch-container">
+        <input type="radio" id="new" name="switch" checked>
+        <label for="new" class="switch-label">New</label>
+
+        <input type="radio" id="used" name="switch">
+        <label for="used" class="switch-label">Used</label>
+
+        <div class="slider"></div>
     </div>
 </div>
 
