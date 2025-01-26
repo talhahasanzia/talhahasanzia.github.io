@@ -1,28 +1,43 @@
-<img src="images/markedista-logo.svg" height="32">
+# Chirpy Starter
 
-Static site generator based on [npm](https://www.npmjs.com/),
-[marked](https://marked.js.org/#/README.md#README.md) and
-[jsdom](https://github.com/jsdom/jsdom) (check `devDependencies` in [package.json](package.json)
-for more details)
+[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
+[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
 
-## demo
+When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
+`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
+from the theme's gem. If you have ever installed this theme gem, you can use the command
+`bundle info --path jekyll-theme-chirpy` to locate these files.
 
-https://padurean.github.io/markedista/
+The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
+able to enjoy the out-of-the-box experience when using feature-rich themes.
 
-## usage
+To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
+Jekyll site. The following is a list of targets:
 
-- add some markdown post(s) in the *_src/_posts/_to-render* folder
-- edit html templates from the *_src/_templates* folder
-- run `npm run render` => html files will be generated in the *posts* folder, rendered markdown
-files will be moved to the *_src/_rendered* folder
-- deploy the root folder to any static host
+```shell
+.
+├── _config.yml
+├── _plugins
+├── _tabs
+└── index.html
+```
 
-- run `npm run minifycss` to minify css (in case there were some changes in any (s)css file(s))
-- run `npm run minifyjs` to minify js (in case there were some changes in any js file(s))
+To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
+latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
 
-## update dependencies
+## Usage
 
-- use `npm outdated` to discover dependencies that are out of date
-- use `npm update` to perform safe dependency upgrades
-- use `npm install <packagename>@latest` to upgrade to the **latest major** version of a package
-- use `npx npm-check-updates -u` and `npm install` to upgrade **all** dependencies to their **latest major** versions
+Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+
+## Contributing
+
+This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+
+## License
+
+This work is published under [MIT][mit] License.
+
+[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
+[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
+[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
+[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE

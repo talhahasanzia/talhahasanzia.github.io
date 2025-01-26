@@ -2,12 +2,19 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+gem "jekyll-theme-chirpy", "~> 7.2", ">= 7.2.4"
 
-# gem "rails"
+gem "html-proofer", "~> 5.0", group: :test
 
-gem "jekyll", "~> 3.8"
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
 
-gem "jekyll-paginate-v2", "~> 2.0"
+gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
-gem "jekyll-feed", "~> 0.11.0"
+gem 'csv'
+gem 'logger'
+gem 'base64'
+
+
