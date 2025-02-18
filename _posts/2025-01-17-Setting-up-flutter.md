@@ -1,6 +1,6 @@
 ---
 title: Setting up Flutter with Android Studio
-date: 2025-02-18 19:00:00 +0000
+date: 2025-01-17 19:00:00 +0000
 categories: [Flutter]
 tags: [flutter, dart, androidstudio]
 ---
@@ -12,9 +12,9 @@ Before installing Flutter, ensure you have the following:
 - A computer running macOS, Windows, or Linux
 - Android Studio installed
 - A stable internet connection
-
+ß
 ## Step 1: Installing Dart
-Dart is the programming language used by Flutter. Flutter comes bundled with Dart, but you may need to install it separately for additional tooling.
+Dart is the programming language used by Flußtter. Flutter comes bundled with Dart, but you may need to install it separately for additional tooling.
 
 ### Windows:
 1. Download the Dart SDK from the [official Dart website](https://dart.dev/get-dart).
