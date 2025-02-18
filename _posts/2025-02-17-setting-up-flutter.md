@@ -1,8 +1,8 @@
 ---
 title: Setting up Flutter with Android Studio
-date: 2025-01-17 19:00:00 +0000
+date: 2025-02-17 19:00:00 +0000
 categories: [Flutter]
-tags: [flutter, dart, androidstudio]
+tags: ['flutter', 'dart']
 ---
 
 Flutter is a powerful UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase. This guide walks you through setting up Flutter with Android Studio to kickstart your app development journey.
