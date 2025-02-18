@@ -1,6 +1,7 @@
 ---
 title: Setting up Flutter with Android Studio
 date: 2025-02-17 19:00:00 +0000
+description: Simple setup for flutter
 categories: [Flutter]
 tags: ['flutter', 'dart']
 ---
