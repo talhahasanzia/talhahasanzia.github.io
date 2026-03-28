@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kids Draw - Learn to Draw the Alphabet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be_Vietnam_Pro:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Be_Vietnam_Pro', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-headline {
+            font-family: 'Plus_Jakarta_Sans', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#fb5151",
+                        "on-primary": "#ffefed",
+                        "surface-container-highest": "#dbdddd",
+                        "on-surface-variant": "#5a5c5c",
+                        "primary": "#b7131a",
+                        "on-secondary-fixed-variant": "#005291",
+                        "on-primary-fixed-variant": "#600005",
+                        "surface": "#f6f6f6",
+                        "on-tertiary-fixed-variant": "#665500",
+                        "surface-bright": "#f6f6f6",
+                        "surface-container": "#e7e8e8",
+                        "on-surface": "#2d2f2f",
+                        "on-secondary": "#edf3ff",
+                        "tertiary-container": "#fdd835",
+                        "tertiary-dim": "#5f4e00",
+                        "primary-fixed-dim": "#ff5a51",
+                        "on-primary-container": "#4f0004",
+                        "secondary-fixed-dim": "#9cc6ff",
+                        "outline": "#767777",
+                        "secondary-dim": "#00518f",
+                        "on-error": "#ffefee",
+                        "secondary-fixed": "#b6d4ff",
+                        "on-tertiary-fixed": "#453900",
+                        "surface-container-low": "#f0f1f1",
+                        "surface-dim": "#d3d5d5",
+                        "primary-container": "#ff766b",
+                        "inverse-surface": "#0c0f0f",
+                        "on-secondary-fixed": "#003561",
+                        "tertiary-fixed": "#fdd835",
+                        "secondary": "#005da4",
+                        "outline-variant": "#acadad",
+                        "secondary-container": "#b6d4ff",
+                        "tertiary-fixed-dim": "#eeca24",
+                        "primary-fixed": "#ff766b",
+                        "on-tertiary-container": "#5b4b00",
+                        "on-primary-fixed": "#000000",
+                        "inverse-primary": "#ff544b",
+                        "tertiary": "#6c5a00",
+                        "on-secondary-container": "#004982",
+                        "surface-container-high": "#e1e3e3",
+                        "inverse-on-surface": "#9c9d9d",
+                        "surface-variant": "#dbdddd",
+                        "surface-tint": "#b7131a",
+                        "background": "#f6f6f6",
+                        "on-error-container": "#570008",
+                        "error-dim": "#9f0519",
+                        "primary-dim": "#a40010",
+                        "on-tertiary": "#fff2cd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#2d2f2f",
+                        "error": "#b31b25"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-on-surface overflow-x-hidden">
+    <!-- Top Navigation Bar (Shared Component: TopNavBar) -->
+    <nav
+        class="fixed top-0 w-full z-50 rounded-b-[3rem] bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.06)]">
+        <div class="flex justify-between items-center h-24 px-12 max-w-[1440px] mx-auto">
+            <div class="flex items-center gap-3 active:scale-95 transition-all duration-150 ease-out cursor-pointer">
+                <span class="text-3xl font-black text-red-700 dark:text-red-500 tracking-tight italic">Kids Draw</span>
+            </div>
+            <div class="hidden md:flex gap-4 items-center font-['Plus_Jakarta_Sans'] font-bold text-lg">
+                <a class="text-slate-600 dark:text-slate-300 font-medium hover:text-red-600 px-4 py-1 hover:scale-105 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
+                    href="#">Features</a>
+                <a class="text-slate-600 dark:text-slate-300 font-medium hover:text-red-600 px-4 py-1 hover:scale-105 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
+                    href="#">Screenshots</a>
+                <a class="text-slate-600 dark:text-slate-300 font-medium hover:text-red-600 px-4 py-1 hover:scale-105 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200"
+                    href="#">Parents</a>
+            </div>
+            <button
+                class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold hover:scale-105 transition-all duration-200 active:scale-95 shadow-lg shadow-primary/20">
+                Get Started
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-32 px-6 overflow-hidden">
+        <!-- Background Accents -->
+        <div
+            class="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2">
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+            <div class="relative mb-10 group">
+                <div
+                    class="absolute -inset-4 bg-primary/20 rounded-[3rem] blur-xl opacity-75 group-hover:opacity-100 transition-opacity">
+                </div>
+                <img alt="Kids Draw App Icon"
+                    class="relative w-40 h-40 md:w-56 md:h-56 rounded-xl shadow-2xl transform transition-transform group-hover:rotate-3"
+                    src="https://lh3.googleusercontent.com/aida/ADBb0uhA9_kiMlLkXJ4i0K58czlkeYAkp_UK94r6dM0blR_lRyLWbOCJZP1uZI5FH1xzWa9dlSLaj-yyIZCYnnxsJD4LVr2dFpp8cxHdlSUkuh2sX4ATRfT1-208j6zMfHqvj62V2mhrjHV65YhXPfeHb2DTESvthCXX3omoTwDCucR8mQb1Eczk5VTVtKOFFqKrnDf9-4lBvccEcs1_8ddkabdEUbg3nsqc5Uq5vBltGrsFERIseoWuFxlMbFHik3IrxyozVyEq47qS" />
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface mb-6 leading-tight max-w-4xl">
+                Learn to Draw the Alphabet, <span class="text-primary italic">One Swipe</span> at a Time!
+            </h1>
+            <p class="text-xl md:text-2xl text-on-surface-variant font-medium mb-10 max-w-2xl leading-relaxed">
+                Transform tablet time into creative learning. Kids Draw guides little hands to master letters through
+                tactile play and vibrant art.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6">
+                <button
+                    class="bg-primary hover:bg-primary-dim text-on-primary text-lg font-bold px-10 py-5 rounded-full shadow-2xl shadow-primary/40 transform hover:scale-105 transition-all active:scale-95 flex items-center gap-2">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">download</span>
+                    Download Now
+                </button>
+                <button
+                    class="bg-secondary-container text-on-secondary-container text-lg font-bold px-10 py-5 rounded-full transform hover:scale-105 transition-all active:scale-95">
+                    Watch it in Action
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Playful Mockup Section (Screenshots) -->
+    <section class="bg-surface-container-low py-32 px-6 rounded-t-[4rem] relative overflow-hidden" id="screenshots">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-secondary mb-4">Magic in Every Letter</h2>
+                <p class="text-lg text-on-surface-variant max-w-xl mx-auto">See how Kids Draw makes learning feel like a
+                    colorful adventure.</p>
+            </div>
+            <!-- Asymmetric Bento Grid Mockups -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <!-- Large Feature Card -->
+                <div
+                    class="md:col-span-7 bg-surface-container-lowest p-6 rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.08)] transform -rotate-2 hover:rotate-0 transition-all duration-500">
+                    <img alt="Tracing the letter O" class="w-full h-auto rounded-lg"
+                        src="https://lh3.googleusercontent.com/aida/ADBb0uietmRQVJmrPMa7J6SYub3Dq617aUt8YCrwRntUxAqEhHEB7b3jxuPbEIV7IcjW88EoFhVhoMGBaSM1EMW8QjwjpOH_9vJZBZkCl7oDuXrbozo1R21oYOl3XJjDdzNnNEjgwBA3Vc18_m9IDRj7_G75ZcGjfdoXMTjiFWTqzL5WwK7XfGgjvLshILtp8BVaz50tENjSJYM4Qmm0Q6k3vtPPXCIh2yn9eX3-cFz6ciqKcwZY4uKOTUlAN1pmRj9X4X0siPooDUTGxw" />
+                    <div class="mt-6 flex justify-between items-center px-2">
+                        <span class="text-xl font-bold text-on-surface">Precision Tracing</span>
+                        <div class="flex gap-2">
+                            <div class="w-6 h-6 rounded-full bg-primary"></div>
+                            <div class="w-6 h-6 rounded-full bg-secondary"></div>
+                            <div class="w-6 h-6 rounded-full bg-tertiary"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small Floating Card 1 -->
+                <div class="md:col-span-5 flex flex-col gap-8">
+                    <div
+                        class="bg-primary-container p-4 rounded-xl shadow-xl transform rotate-3 hover:rotate-0 transition-all duration-500">
+                        <img alt="Tracing the letter C" class="w-full h-auto rounded-lg"
+                            src="https://lh3.googleusercontent.com/aida/ADBb0ugYvMBFOI81VvyvWmKI1w_P4_Crr7vma1_heGFmEiym40RCBCt_loTJtQHwt_MLILhc6vucmvq9VTADuiYBBEz3NU6wd4pDP0KojihglNBPpYy8JXderJGUht9O-8kwmqmaIq6ANfIMptojLCZ7U_bXiEBarP5ICRMP-jVgbRZxC7DGnzc3ThNWgcJCH8Flx4vWZGhyUOVRG6UOpKSYav6qNTJ0qsr5OWz2gVRWwDZJ-o9jf_WBHCTD8GsD6PKJlbHuhEQ1a-Sy" />
+                        <div class="p-4">
+                            <h3 class="font-bold text-on-primary-container text-xl">Tactile Feedback</h3>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-tertiary-container p-4 rounded-xl shadow-xl transform -rotate-1 hover:rotate-0 transition-all duration-500">
+                        <img alt="Tracing the letter E" class="w-full h-auto rounded-lg"
+                            src="https://lh3.googleusercontent.com/aida/ADBb0uj1bz2JA5K2fG2hIotpGlRvBDLWY_Ny9y5jJ7lcROLJEyQjBFsBBaiguNAQ3FUZfubYLm51wBs9__1Fo4J_3jStSqBQ2JDo_cHpfqV9PWUKHfxQdq-FV4bsw0YVMMZdSO5oWLkt6QwBeqJruXCANdsm7eapus3PSr-ZfZstYjYx50aHd667hoUuJ-sRbv32b3o56sTM9OU9Cr_62CdYLaszU4lSWyQPvBb1YvXTKyvNtBp3M_s3bJBqnSiDTHGq3IF2D8C_Rn6CuQ" />
+                        <div class="p-4">
+                            <h3 class="font-bold text-on-tertiary-container text-xl">Vibrant Colors</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom Long Card -->
+                <div
+                    class="md:col-span-12 mt-8 bg-secondary p-8 rounded-xl shadow-2xl text-on-secondary flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <h2 class="text-4xl font-black mb-4 italic uppercase">Built for Little Hands</h2>
+                        <p class="text-xl opacity-90 leading-relaxed">Our 'Infinite Canvas' technology allows kids to
+                            scribble, draw, and erase with zero frustration. Perfect for ages 3-6.</p>
+                        <div class="mt-8 flex gap-4">
+                            <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                                <span class="material-symbols-outlined">verified_user</span>
+                                <span class="font-bold">COPPA Compliant</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
+                                <span class="material-symbols-outlined">ads_click</span>
+                                <span class="font-bold">No In-App Ads</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <img alt="The letter A" class="w-full rounded-lg shadow-inner transform scale-110"
+                            src="https://lh3.googleusercontent.com/aida/ADBb0ugWtzUZCBVNBXCqpAOmtauTIGqFmml6op9wgAs3APQSXka4aUcjcdrmPc-vIszkX8vS5QDJ-lrhMScP_CFonICelzFO_k4stp-R055Wz5jt4OHgsVNlhWQQ3VWNt38wkXNgQJy5tjln1rBvUOayNb1PdTGLIX778IIPBqfCyk0vquXhOIVE7daxrE67JkpisLaiqkMby27nduAIMDa-Pn8Glyx1OUYn1unokOf4xtVoCUvcvdTCCzcFARsZ2Hzh3Bu9rO4Ay8bdtQ" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-32 px-6" id="features">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="text-center group">
+                <div
+                    class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                    <span class="material-symbols-outlined text-4xl"
+                        style="font-variation-settings: 'FILL' 1;">draw</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Tactile Feedback</h3>
+                <p class="text-on-surface-variant">Vibrations and sound effects mimic the feel of drawing on real paper
+                    with colorful crayons.</p>
+            </div>
+            <div class="text-center group">
+                <div
+                    class="w-24 h-24 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+                    <span class="material-symbols-outlined text-4xl"
+                        style="font-variation-settings: 'FILL' 1;">psychology</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Smart Learning</h3>
+                <p class="text-on-surface-variant">Our adaptive engine recognizes strokes and gently nudges kids towards
+                    the correct letter shape.</p>
+            </div>
+            <div class="text-center group">
+                <div
+                    class="w-24 h-24 bg-tertiary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-tertiary group-hover:text-on-tertiary transition-colors">
+                    <span class="material-symbols-outlined text-4xl"
+                        style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Sticker Rewards</h3>
+                <p class="text-on-surface-variant">Every completed letter unlocks a hidden sticker. Collect all 100+ to
+                    decorate your digital toybox!</p>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="px-6 mb-20">
+        <div
+            class="max-w-5xl mx-auto bg-primary text-on-primary rounded-xl p-12 md:p-20 text-center relative overflow-hidden">
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-black/10 rounded-full blur-3xl"></div>
+            <h2 class="text-4xl md:text-6xl font-black mb-8">Ready to start drawing?</h2>
+            <p class="text-xl md:text-2xl mb-12 opacity-90">Join over 10,000 little artists creating magic every day.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a class="bg-white text-primary px-12 py-5 rounded-full font-black text-xl shadow-xl hover:scale-105 transition-all"
+                    href="#">Get it on App Store</a>
+                <a class="bg-black text-white px-12 py-5 rounded-full font-black text-xl shadow-xl hover:scale-105 transition-all"
+                    href="#">Get it on Google Play</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer (Shared Component: Footer) -->
+    <footer
+        class="w-full rounded-t-[4rem] mt-20 bg-slate-50 dark:bg-slate-950 font-['Be_Vietnam_Pro'] text-sm text-slate-500">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6 px-16 py-12 max-w-7xl mx-auto">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <span class="text-xl font-bold text-red-600">Kids Draw</span>
+                <p class="text-slate-400">© 2024 Kids Draw. All rights reserved. Built for little creators.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-slate-400 hover:text-blue-500 transition-colors" href="#">Privacy Policy</a>
+                <a class="text-slate-400 hover:text-blue-500 transition-colors" href="#">Terms of Service</a>
+                <a class="text-slate-400 hover:text-blue-500 transition-colors" href="#">Safety Guide</a>
+            </div>
+            <div class="flex gap-4">
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center cursor-pointer hover:bg-primary hover:text-white transition-all tap-highlight-transparent">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </div>
+                <div
+                    class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center cursor-pointer hover:bg-secondary hover:text-white transition-all tap-highlight-transparent">
+                    <span class="material-symbols-outlined text-lg">star</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
