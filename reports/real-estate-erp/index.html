@@ -854,6 +854,165 @@
             border: 1px solid rgba(245, 158, 11, 0.3);
         }
 
+        /* Build vs ERPNext Verdict & H2H Section */
+        .verdict-rating-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 26px;
+        }
+
+        .verdict-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 26px 28px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verdict-card.recommended {
+            border: 2px solid #10b981;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(56, 189, 248, 0.05) 100%);
+        }
+
+        .verdict-card.caution {
+            border: 1px solid rgba(245, 158, 11, 0.45);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.06) 0%, rgba(17, 24, 39, 0) 100%);
+        }
+
+        .verdict-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .verdict-pill {
+            font-size: 11.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            padding: 4px 12px;
+            border-radius: 999px;
+        }
+
+        .verdict-pill.green {
+            background: rgba(16, 185, 129, 0.18);
+            color: #10b981;
+        }
+
+        .verdict-pill.amber {
+            background: rgba(245, 158, 11, 0.18);
+            color: var(--accent-amber);
+        }
+
+        .verdict-score {
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .verdict-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .verdict-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .h2h-table-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow-x: auto;
+            margin-bottom: 26px;
+        }
+
+        .h2h-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            text-align: left;
+            min-width: 780px;
+        }
+
+        .h2h-table thead th {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 14px 18px;
+            border-bottom: 2px solid var(--border-highlight);
+        }
+
+        .h2h-table tbody td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .h2h-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .h2h-table tbody tr:hover td {
+            background: var(--bg-card-hover);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .arch-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px 22px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .arch-card h4 {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .arch-card p, .arch-card li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .arch-card ul {
+            padding-left: 18px;
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
     </style>
 </head>
 <body data-theme="light">
@@ -963,6 +1122,10 @@
     
 
             <div class="nav-group-title">ERPNext Fit-Gap Matrix</div>
+            <a href="#build-vs-erpnext" class="nav-link">
+                <span class="nav-num">🏆</span>
+                <span class="nav-text">Build vs. ERPNext Verdict</span>
+            </a>
             <a href="#erpnext-comparison" class="nav-link">
                 <span class="nav-num">⚖️</span>
                 <span class="nav-text">ERPNext Feature Comparison</span>
@@ -2233,6 +2396,127 @@
         </div>
     </article>
     
+            </section>
+
+            <!-- Strategic Verdict: Develop Your Own vs. Build on ERPNext -->
+            <section class="section-block" id="build-vs-erpnext">
+                <div class="section-header">
+                    <div>
+                        <h2>🏆 Strategic Verdict: Develop From Scratch vs. Build on ERPNext</h2>
+                        <p>Executive rating, head-to-head engineering scorecard, and recommended target architecture based on the 280-feature fit-gap analysis.</p>
+                    </div>
+                </div>
+
+                <!-- Overall Rating Cards -->
+                <div class="verdict-rating-grid">
+                    <div class="verdict-card recommended">
+                        <div class="verdict-top">
+                            <span class="verdict-pill green">✓ Strongly Recommended</span>
+                            <span class="verdict-score" style="color: #10b981;">9.2 <small style="font-size: 16px; color: var(--text-muted); font-weight: 600;">/ 10</small></span>
+                        </div>
+                        <h3>Build on ERPNext (Custom Frappe App + ERPNext Core)</h3>
+                        <p>
+                            <strong>85.8% of the 280 capabilities</strong> are either ready out-of-the-box (<strong>52.9% Native</strong>) or configurable via low-code Frappe DocTypes, Workflows, and Print Formats (<strong>32.9% Configurable</strong>), plus <strong>6.1% via Ecosystem Apps/APIs</strong>. Your engineering team only needs to custom-build the <strong>8.2% (23 features)</strong> that differentiate a Real Estate ERP (Interactive GIS Map, Biometric SDKs, Balloting Engine, and Bilingual AI Agent).
+                        </p>
+                    </div>
+
+                    <div class="verdict-card caution">
+                        <div class="verdict-top">
+                            <span class="verdict-pill amber">⚠️ High Risk / Low ROI</span>
+                            <span class="verdict-score" style="color: var(--accent-amber);">4.5 <small style="font-size: 16px; color: var(--text-muted); font-weight: 600;">/ 10</small></span>
+                        </div>
+                        <h3>Develop Your Own from Scratch (Greenfield Custom ERP)</h3>
+                        <p>
+                            Requires engineering <strong>100% (280/280)</strong> of the stack from zero. Teams end up spending 75–80% of their budget reinventing commodity ERP infrastructure—double-entry General Ledgers, multi-company Cost Centers, FIFO/Moving-Average Construction Store Inventory, IPC Retention accounting, Payroll, RBAC, and Forensic Audit Logs—where custom-built systems frequently suffer from ledger imbalances.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Head-to-Head Scorecard Table -->
+                <div class="h2h-table-wrap">
+                    <table class="h2h-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 22%;">Evaluation Criteria</th>
+                                <th style="width: 31%;">Develop Your Own (From Scratch)</th>
+                                <th style="width: 33%;">Build on ERPNext (Custom Frappe App)</th>
+                                <th style="width: 14%;">Winner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Time to Market (MVP → Full Suite)</strong></td>
+                                <td><strong>18 – 30+ months</strong> before accounting, construction inventory, and post-sale transfers stabilize.</td>
+                                <td><strong>3 – 6 months</strong> (Core ERP ready Day 1; custom real estate workflows &amp; UI built incrementally).</td>
+                                <td><span class="comp-badge badge-status-native">ERPNext (4–5x Faster)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Engineering Effort Allocation</strong></td>
+                                <td><strong>80%</strong> spent rebuilding Accounting, Inventory, HR, RBAC, PDF generators, and Audit trails; only <strong>20%</strong> on Real Estate UX.</td>
+                                <td><strong>90%</strong> focused strictly on high-value Real Estate differentiators (GIS Map, Balloting, Biometrics, Transfer Desk).</td>
+                                <td><span class="comp-badge badge-status-native">ERPNext</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Accounting &amp; Forensic Audit Integrity</strong></td>
+                                <td><strong>3 / 10 (High Risk)</strong> — Complex edge cases (file merging, 10% buy-back deductions, land-for-plot barter, dealer rebate offsets) often corrupt custom ledgers.</td>
+                                <td><strong>9.5 / 10</strong> — Battle-tested double-entry GL, multi-dimensional cost centers, bank reconciliation, and immutable version logs.</td>
+                                <td><span class="comp-badge badge-status-native">ERPNext</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Construction, BOQ &amp; Store Inventory</strong></td>
+                                <td><strong>4 / 10</strong> — Building multi-warehouse valuation, Material Requisitions, comparative RFQs, and subcontractor IPC retention from scratch is massive.</td>
+                                <td><strong>9 / 10</strong> — Native Stock/Warehouse engine, BOM/BOQ structures, Purchase Orders, GRN Quality Inspection, and Subcontracting.</td>
+                                <td><span class="comp-badge badge-status-native">ERPNext</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Real Estate Front-Desk UX</strong></td>
+                                <td><strong>9 / 10</strong> — Purpose-built screens from day one.</td>
+                                <td><strong>6.5 / 10 Vanilla → 9.5 / 10 with Custom Frappe UI Pages</strong> (Custom single-screen desks for Booking, Biometric Transfer, and Map Selection).</td>
+                                <td><span class="comp-badge badge-status-config">Tie (with Custom UI)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Licensing &amp; IP Ownership</strong></td>
+                                <td><strong>10 / 10</strong> — 100% proprietary codebase.</td>
+                                <td><strong>9 / 10</strong> — 100% open-source (GPLv3), zero per-user licensing fees, packaged as your own modular Frappe application.</td>
+                                <td><span class="comp-badge badge-status-config">Tie</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recommended 3-Layer Target Architecture -->
+                <div class="arch-grid">
+                    <div class="arch-card">
+                        <h4><span style="color: #10b981;">●</span> Layer 1: Use ERPNext Core As-Is (52.9%)</h4>
+                        <p>Rely on standard ERPNext modules without modifying core code:</p>
+                        <ul>
+                            <li><strong>Accounts &amp; GL:</strong> Multi-company COA, Landowner Payables, Customer Receivables, PDC clearing, Bank Reconciliation, WHT &amp; FBR Tax.</li>
+                            <li><strong>Construction &amp; Stores:</strong> Material Requests, RFQs, Purchase Orders, GRN Quality Checks, Warehouse Valuation, and Fixed Assets.</li>
+                            <li><strong>HR, Payroll &amp; Helpdesk:</strong> Shifts, Attendance, Loans/Advances, Monthly Payroll, and Member Complaint Ticketing (<code>HD Ticket</code>).</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-card">
+                        <h4><span style="color: var(--accent-primary);">●</span> Layer 2: Low-Code Frappe App Configuration (39.0%)</h4>
+                        <p>Package domain DocTypes, Workflows, and Integrations in a dedicated Frappe app:</p>
+                        <ul>
+                            <li><strong>Patwar &amp; Inventory Master:</strong> Hierarchical DocTypes for <code>Mouza → Khewat → Khatoni → Khasra</code> and <code>Project → Block → Street → Plot/Unit</code>.</li>
+                            <li><strong>Post-Sale Legal Workflows:</strong> State-controlled workflows for File Platters, Multi-stage Transfers (<code>NDC → Tax → Biometrics → Allotment</code>), File Merging, and Buy-Backs.</li>
+                            <li><strong>Ecosystem Connectors:</strong> <code>frappe_whatsapp</code>, Meta Lead Ads webhooks, and Kuickpay / 1Link online biller APIs.</li>
+                        </ul>
+                    </div>
+
+                    <div class="arch-card">
+                        <h4><span style="color: var(--accent-amber);">●</span> Layer 3: Custom-Engineered Differentiators (8.2%)</h4>
+                        <p>Concentrate 100% of custom software engineering on 4 high-impact micro-modules:</p>
+                        <ul>
+                            <li><strong>Interactive GIS Map Studio:</strong> Leaflet/Mapbox/SVG master-plan cutting with live color-coded statuses and click-to-Hold/Book locking (<code>FEAT-025–030</code>).</li>
+                            <li><strong>Biometric Booking &amp; Transfer Desk:</strong> Local USB Fingerprint SDK bridge (SecuGen/DigitalPersona) + live Webcam snapshot + NADRA CNIC check (<code>FEAT-070–072</code>).</li>
+                            <li><strong>Computerized Balloting Studio:</strong> High-speed rule engine (10,000+ plots/min) + 3D live ceremony display screen (<code>FEAT-109–115</code>).</li>
+                            <li><strong>Bilingual AI Agent:</strong> Urdu / Roman Urdu / English LLM connected to ERPNext REST APIs for 24/7 inventory &amp; ledger queries (<code>FEAT-050–055</code>).</li>
+                        </ul>
+                    </div>
+                </div>
             </section>
 
             <!-- Feature-by-Feature Comparison Table Section -->
