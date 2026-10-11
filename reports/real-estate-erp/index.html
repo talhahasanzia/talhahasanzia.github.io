@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate, Construction & Housing Management — Market Research Report</title>
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #161f33;
+            --bg-card-hover: #1e2942;
+            --bg-submodule: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #818cf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --border-color: #1e293b;
+            --border-highlight: #334155;
+            --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --bg-submodule: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-primary: #0284c7;
+            --accent-secondary: #4f46e5;
+            --accent-emerald: #059669;
+            --accent-amber: #d97706;
+            --border-color: #e2e8f0;
+            --border-highlight: #cbd5e1;
+            --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.65;
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 300px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-brand {
+            padding: 20px 18px;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            background: var(--bg-secondary);
+            z-index: 10;
+        }
+
+        .brand-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-emerald);
+            background: rgba(52, 211, 153, 0.12);
+            padding: 3px 8px;
+            border-radius: 999px;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-brand h1 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .sidebar-nav {
+            padding: 14px 10px 28px;
+            flex: 1;
+        }
+
+        .nav-group-title {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            padding: 12px 10px 6px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 10px;
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            margin-bottom: 2px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--bg-card-hover);
+            color: var(--accent-primary);
+        }
+
+        .nav-num {
+            font-size: 13px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            min-width: 28px;
+            text-align: center;
+        }
+
+        /* Main Content Layout */
+        .main-wrapper {
+            flex: 1;
+            margin-left: 300px;
+            max-width: calc(100% - 300px);
+        }
+
+        /* Sticky Top Utility Bar */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        [data-theme="light"] .topbar {
+            background: rgba(255, 255, 255, 0.88);
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            max-width: 540px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-highlight);
+            border-radius: 999px;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border-highlight);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            transition: all 0.15s ease;
+        }
+
+        .btn:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-primary);
+        }
+
+        .container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 36px 36px 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(129, 140, 248, 0.1) 50%, rgba(52, 211, 153, 0.08) 100%);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 38px 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-primary);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 5px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 920px;
+            margin-bottom: 28px;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--accent-primary);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Section Headings */
+        .section-block {
+            margin-bottom: 52px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-header {
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        /* TL;DR 18-Card Grid */
+        .tldr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 16px;
+        }
+
+        .tldr-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tldr-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-primary);
+            box-shadow: var(--shadow-lg);
+            background: var(--bg-card-hover);
+        }
+
+        .tldr-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .tldr-num {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            background: rgba(56, 189, 248, 0.12);
+            padding: 3px 10px;
+            border-radius: 999px;
+        }
+
+        .tldr-arrow {
+            color: var(--text-muted);
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .tldr-card:hover .tldr-arrow {
+            transform: translateX(4px);
+            color: var(--accent-primary);
+        }
+
+        .tldr-card h4 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .tldr-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Lifecycle Stepper */
+        .lifecycle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 12px;
+        }
+
+        .lifecycle-step {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+        }
+
+        .step-badge {
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--accent-primary);
+            font-weight: 800;
+            font-size: 18px;
+            min-width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        /* Module Cards */
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            scroll-margin-top: 84px;
+            transition: border-color 0.2s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--accent-primary);
+        }
+
+        .module-card-header {
+            padding: 20px 26px;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.08) 0%, rgba(30, 41, 59, 0) 100%);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .module-card.collapsed .module-card-header {
+            border-bottom: none;
+        }
+
+        .module-title-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .module-badge {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            margin-top: 2px;
+            letter-spacing: 0.03em;
+        }
+
+        .module-title-group h3 {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .module-subtitle {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+
+        .collapse-btn {
+            background: transparent;
+            border: 1px solid var(--border-highlight);
+            color: var(--text-secondary);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: transform 0.25s ease, background 0.15s;
+        }
+
+        .module-card.collapsed .collapse-btn {
+            transform: rotate(-90deg);
+        }
+
+        .module-card.collapsed .module-card-body {
+            display: none;
+        }
+
+        .module-card-body {
+            padding: 24px 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .submodule-card {
+            background: var(--bg-submodule);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+        }
+
+        .submodule-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--border-highlight);
+            flex-wrap: wrap;
+        }
+
+        .submodule-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-emerald);
+            flex-shrink: 0;
+        }
+
+        .submodule-header h4 {
+            font-size: 15.5px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            flex: 1;
+        }
+
+        .item-count {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            padding: 2px 9px;
+            border-radius: 999px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .feature-item {
+            position: relative;
+            padding-left: 20px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-item::before {
+            content: "▹";
+            position: absolute;
+            left: 2px;
+            top: 0;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
+        .feature-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 12.5px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .hidden-by-search {
+            display: none !important;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-wrapper {
+                margin-left: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <span class="brand-badge">Market Research Report</span>
+            <h1>Real Estate, Construction & Housing Management</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-group-title">Report Overview</div>
+            <a href="#overview" class="nav-link"><span class="nav-num">⚡</span><span class="nav-text">Executive Summary</span></a>
+            <a href="#lifecycle" class="nav-link"><span class="nav-num">🔄</span><span class="nav-text">End-to-End Business Lifecycle</span></a>
+
+            <div class="nav-group-title">Core Industry Modules</div>
+            
+    <a href="#module-1" class="nav-link" onclick="openAndScrollToModule(event, 'module-1')">
+        <span class="nav-num">🗺️</span>
+        <span class="nav-text">Land Acquisition, Procurement &amp; Re…</span>
+    </a>
+    
+    <a href="#module-2" class="nav-link" onclick="openAndScrollToModule(event, 'module-2')">
+        <span class="nav-num">📐</span>
+        <span class="nav-text">Project Setup, Town Planning, Inve…</span>
+    </a>
+    
+    <a href="#module-3" class="nav-link" onclick="openAndScrollToModule(event, 'module-3')">
+        <span class="nav-num">📣</span>
+        <span class="nav-text">Digital Marketing, Lead Generation…</span>
+    </a>
+    
+    <a href="#module-4" class="nav-link" onclick="openAndScrollToModule(event, 'module-4')">
+        <span class="nav-num">🤖</span>
+        <span class="nav-text">Real Estate CRM, Property Matching</span>
+    </a>
+    
+    <a href="#module-5" class="nav-link" onclick="openAndScrollToModule(event, 'module-5')">
+        <span class="nav-num">🤝</span>
+        <span class="nav-text">Dealer, Sub-Dealer, Platter, Bulk …</span>
+    </a>
+    
+    <a href="#module-6" class="nav-link" onclick="openAndScrollToModule(event, 'module-6')">
+        <span class="nav-num">📝</span>
+        <span class="nav-text">File / Unit Reservation, Token, Bi…</span>
+    </a>
+    
+    <a href="#module-7" class="nav-link" onclick="openAndScrollToModule(event, 'module-7')">
+        <span class="nav-num">💳</span>
+        <span class="nav-text">Installment Plans, Collections, PD…</span>
+    </a>
+    
+    <a href="#module-8" class="nav-link" onclick="openAndScrollToModule(event, 'module-8')">
+        <span class="nav-num">🎲</span>
+        <span class="nav-text">Computerized Plot Balloting &amp; Allo…</span>
+    </a>
+    
+    <a href="#module-9" class="nav-link" onclick="openAndScrollToModule(event, 'module-9')">
+        <span class="nav-num">⚖️</span>
+        <span class="nav-text">Post-Sale Legal &amp; File Operations</span>
+    </a>
+    
+    <a href="#module-10" class="nav-link" onclick="openAndScrollToModule(event, 'module-10')">
+        <span class="nav-num">🔑</span>
+        <span class="nav-text">Demarcation, Possession, Handover …</span>
+    </a>
+    
+    <a href="#module-11" class="nav-link" onclick="openAndScrollToModule(event, 'module-11')">
+        <span class="nav-num">🏗️</span>
+        <span class="nav-text">Developer Construction Management,…</span>
+    </a>
+    
+    <a href="#module-12" class="nav-link" onclick="openAndScrollToModule(event, 'module-12')">
+        <span class="nav-num">🏘️</span>
+        <span class="nav-text">Housing Society Maintenance, Utili…</span>
+    </a>
+    
+    <a href="#module-13" class="nav-link" onclick="openAndScrollToModule(event, 'module-13')">
+        <span class="nav-num">🏢</span>
+        <span class="nav-text">Tenant, Lease, Rental &amp; Commercial…</span>
+    </a>
+    
+    <a href="#module-14" class="nav-link" onclick="openAndScrollToModule(event, 'module-14')">
+        <span class="nav-num">📱</span>
+        <span class="nav-text">Member Communications, Complaint H…</span>
+    </a>
+    
+    <a href="#module-15" class="nav-link" onclick="openAndScrollToModule(event, 'module-15')">
+        <span class="nav-num">💰</span>
+        <span class="nav-text">Accounts, Finance, Taxation &amp; Fixe…</span>
+    </a>
+    
+    <a href="#module-16" class="nav-link" onclick="openAndScrollToModule(event, 'module-16')">
+        <span class="nav-num">👥</span>
+        <span class="nav-text">Human Resource Management</span>
+    </a>
+    
+    <a href="#module-17" class="nav-link" onclick="openAndScrollToModule(event, 'module-17')">
+        <span class="nav-num">📊</span>
+        <span class="nav-text">Document Management</span>
+    </a>
+    
+    <a href="#module-18" class="nav-link" onclick="openAndScrollToModule(event, 'module-18')">
+        <span class="nav-num">🌐</span>
+        <span class="nav-text">Complementary Enterprise Verticals…</span>
+    </a>
+    
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+        <!-- Sticky Search & Controls Bar -->
+        <header class="topbar">
+            <div class="search-box">
+                <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Search capabilities, workflows, modules, or reports (e.g. Khasra, Balloting, Kuickpay, BOQ, NDC)..." oninput="filterContent()">
+            </div>
+            <div class="topbar-actions">
+                <button class="btn" onclick="expandAll(true)">Expand All</button>
+                <button class="btn" onclick="expandAll(false)">Collapse All</button>
+                <button class="btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Hero Banner -->
+            <section class="hero" id="top">
+                <div class="hero-tag">📊 Comprehensive Industry Research Report</div>
+                <h1>Real Estate, Construction & Housing Management — Market Research Report</h1>
+                <p>
+                    An executive market research guide covering the complete real estate, construction, and housing society value chain—from <strong>Raw Land Acquisition (Patwar/Mouza/Khasra)</strong> and <strong>GIS Town Planning</strong> to <strong>AI Real Estate CRM, Dealer Networks, Biometric Booking, Installment Recovery, Computerized Plot Balloting, Post-Sale Transfers, BOQ Construction Management, Possession, Society Maintenance Billing, and Enterprise Finance</strong>.
+                </p>
+                <div class="stats-bar">
+                    <div class="stat-card">
+                        <div class="stat-value">18</div>
+                        <div class="stat-label">Core Business Domains</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">85+</div>
+                        <div class="stat-label">Operational Sub-Modules</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">550+</div>
+                        <div class="stat-label">Business Capabilities & Reports</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">End-to-End</div>
+                        <div class="stat-label">Land-to-Maintenance Lifecycle</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Executive Summary Grid -->
+            <section class="section-block" id="overview">
+                <div class="section-header">
+                    <div>
+                        <h2>⚡ Executive Summary — Core Business Modules at a Glance</h2>
+                        <p>Click any domain card below to jump directly to its detailed capabilities and expand it.</p>
+                    </div>
+                </div>
+                <div class="tldr-grid">
+                    
+    <a href="#module-1" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-1')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🗺️ Land &amp; Patwar</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Land Acquisition &amp; Patwar Records</h4>
+        <p>Mouza, Khasra, Khewat, Khatoni, Warasat (inheritance mutations), landowner contracts, bayana/agreements, seller ledgers, and litigation tracking.</p>
+    </a>
+    
+    <a href="#module-2" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-2')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">📐 Town Planning &amp; GIS</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Town Planning, GIS &amp; Interactive Mapping</h4>
+        <p>Phase/Sector/Block/Floor hierarchies, multi-unit plot inventories, interactive Google Maps &amp; 2D/3D GIS vector overlays, X/Y coordinates, and map cutting.</p>
+    </a>
+    
+    <a href="#module-3" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-3')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">📣 Digital Marketing</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Digital Marketing, Lead Gen &amp; E-Commerce</h4>
+        <p>Social media campaigns, virtual tours, real estate e-commerce storefronts, dynamic project microsites, and SEO/analytics integration.</p>
+    </a>
+    
+    <a href="#module-4" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-4')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🤖 CRM &amp; AI Chatbot</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Real Estate CRM, Property Matching &amp; AI Chatbot</h4>
+        <p>Lead pipelines, auto-assignment, property-to-inquiry matching, and 24/7 bilingual (Urdu &amp; English) AI WhatsApp/web chatbots.</p>
+    </a>
+    
+    <a href="#module-5" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-5')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🤝 Dealers &amp; Commissions</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Dealers, Investors, Platters &amp; Commissions</h4>
+        <p>Dealer accreditation, plot reservation quotas, bulk platters with discount slabs, and automated multi-tier commission/rebate payouts.</p>
+    </a>
+    
+    <a href="#module-6" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-6')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">📝 Registration &amp; Booking</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Registration, Biometrics &amp; Booking</h4>
+        <p>Token holds, CNIC/NADRA &amp; fingerprint/webcam biometrics, joint owners, nominees, booking agreements, and sales &amp; booking analytical reports.</p>
+    </a>
+    
+    <a href="#module-7" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-7')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">💳 Installments &amp; Recovery</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Installments, Milestones, Collections &amp; Recovery</h4>
+        <p>Flexible &amp; construction-linked schedules, Kuickpay/1Link/PDC collections, LPS/fines, call center recovery logs, legal notices, and defaulter aging reports.</p>
+    </a>
+    
+    <a href="#module-8" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-8')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🎲 Plot Balloting</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Computerized Plot Balloting &amp; Allotment</h4>
+        <p>Location &amp; plot number balloting (10,000+ plots/min), family/dealer clubbing, diamond-to-normal categories, ceremony animations, and allotment letters.</p>
+    </a>
+    
+    <a href="#module-9" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-9')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">⚖️ Transfers &amp; Legal</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Transfers, Merging, NDC/NOC &amp; Cancellations</h4>
+        <p>Multi-stage plot transfer sets (NDC, tax, biometrics, new allotment), file merging, sub-agreements, authority letters, and buy-back refunds.</p>
+    </a>
+    
+    <a href="#module-10" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-10')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🔑 Demarcation &amp; Handover</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Demarcation, Possession, Handover &amp; Bylaws</h4>
+        <p>Site demarcation certificates, excess/short land billing, possession letters, structural completion certificates, and member house construction approvals.</p>
+    </a>
+    
+    <a href="#module-11" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-11')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🏗️ Construction &amp; BOQ</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Construction Management, BOQ, WBS &amp; Inventory</h4>
+        <p>Multi-level BOQ &amp; WBS budgeting, work orders, contractor IPC/retention billing, material requisitions, QC (GRN), store valuation, and project reports.</p>
+    </a>
+    
+    <a href="#module-12" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-12')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🏘️ Society Maintenance</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Housing Society Maintenance &amp; Utility Billing</h4>
+        <p>Monthly maintenance, metered electricity/water/gas with slab tariffs, bulk bill generation, care alerts, gate security, and recovery reports.</p>
+    </a>
+    
+    <a href="#module-13" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-13')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🏢 Tenants &amp; Leasing</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Tenant, Lease, Rental &amp; Mall Management</h4>
+        <p>Commercial/residential tenancy agreements, automated rent escalation, utility recharging, security deposits, and occupancy/vacancy reports.</p>
+    </a>
+    
+    <a href="#module-14" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-14')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">📱 Helpdesk &amp; Portals</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Member Communications, Helpdesk &amp; Mobile Apps</h4>
+        <p>Complaint ticketing &amp; SLA escalation, member self-service portal, and native iOS/Android apps for Executives, Clients, and Employees.</p>
+    </a>
+    
+    <a href="#module-15" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-15')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">💰 Accounts &amp; Finance</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Accounts, Finance, Taxation &amp; Fixed Assets</h4>
+        <p>Multi-level COA, vouchers, bank reconciliation, FBR/ZATCA e-invoicing, withholding taxes, fixed asset depreciation, and audited financial statements.</p>
+    </a>
+    
+    <a href="#module-16" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-16')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">👥 HR &amp; Payroll</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>HRM, Biometric/Facial Attendance &amp; Payroll</h4>
+        <p>Recruitment, employee profiles, biometric/facial/geo-fenced attendance, shifts, leave encashment, loans/advances, EOBI/PESSI, and monthly payroll.</p>
+    </a>
+    
+    <a href="#module-17" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-17')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">📊 DMS, BI &amp; Audit</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>DMS E-Library, BI Analytics &amp; Forensic Security</h4>
+        <p>Centralized digital document vault, task delegation, real-time KPI scorecards, dynamic pivot tables, role-based access, and forensic audit trails.</p>
+    </a>
+    
+    <a href="#module-18" class="tldr-card searchable-block" onclick="openAndScrollToModule(event, 'module-18')">
+        <div class="tldr-card-top">
+            <span class="tldr-num">🌐 Verticals &amp; Pricing</span>
+            <span class="tldr-arrow">→</span>
+        </div>
+        <h4>Complementary ERP Verticals &amp; Market Pricing</h4>
+        <p>Manufacturing, Trading/POS, Export/Import, Builders/Contractors, School/Hospital/Hotel ERP suites, and industry SaaS/perpetual pricing benchmarks.</p>
+    </a>
+    
+                </div>
+            </section>
+
+            <!-- End-to-End Lifecycle -->
+            <section class="section-block" id="lifecycle">
+                <div class="section-header">
+                    <div>
+                        <h2>🔄 End-to-End Business Lifecycle Overview</h2>
+                        <p>Complete operational flow from raw land procurement to post-handover society maintenance and financial audit.</p>
+                    </div>
+                </div>
+                <div class="lifecycle-grid">
+                    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🗺️</div>
+        <div class="step-text">Land Acquisition &amp; Revenue/Patwar Records (Mouza, Khasra, Khewat, Khatoni, Warasat)</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">📐</div>
+        <div class="step-text">Project Setup, Town Planning, GIS &amp; Interactive Digital Mapping (Blocks, Floors, Plot X/Y, Map Cutting)</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">📣</div>
+        <div class="step-text">Digital Marketing, Social Media Lead Gen &amp; Real Estate E-Commerce</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🤖</div>
+        <div class="step-text">Real Estate CRM, Property Matching (REMS) &amp; Bilingual AI Chatbot (Urdu/English + WhatsApp)</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🤝</div>
+        <div class="step-text">Dealer, Sub-Dealer, Investor, Platter &amp; Commission / Rebate / Target Management</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">📝</div>
+        <div class="step-text">Reservation, Token, Customer Registration (Biometrics, Joint Owners, Nominees) &amp; Booking / Agreements</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">💳</div>
+        <div class="step-text">Installment Plans, Construction-Linked Milestones, PDC/Online Collections, LPS/Fines, Recovery &amp; Legal Notices</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🎲</div>
+        <div class="step-text">Computerized Plot Balloting (10,000+ Plots/Min, Clubbing, Preferences, Ceremony GIF/Sound) &amp; Allotment</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">⚖️</div>
+        <div class="step-text">Post-Sale Legal &amp; File Operations: Transfers, Merging, Sub-Agreements, Authority Letters, NOC, Cancellation &amp; Buy-Back</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🔑</div>
+        <div class="step-text">Demarcation, Plot Size Variation Billing &amp; Member House Construction Approvals</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🏗️</div>
+        <div class="step-text">Construction Management, BOQ, Work Orders, Procurement, Quality Inspection (GRN) &amp; Store/Inventory</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🏘️</div>
+        <div class="step-text">Possession, Completion Certificates &amp; Handover to Maintenance</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">🏢</div>
+        <div class="step-text">Housing Society &amp; Commercial Maintenance, Metered/Fixed Utility Billing, Facility Management &amp; Care Alerts</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">📱</div>
+        <div class="step-text">Tenant, Lease, Rental &amp; Commercial Complex Management</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">💰</div>
+        <div class="step-text">Complaint / Helpdesk Ticketing, Application Management, Customer Portal &amp; Mobile Apps (ERP, Client, Employee)</div>
+    </div>
+    
+    <div class="lifecycle-step searchable-block">
+        <div class="step-badge">👥</div>
+        <div class="step-text">Core Enterprise Back-Office: Accounts &amp; Finance (FBR/ZATCA), Fixed Assets, HR/Attendance/Payroll, DMS E-Library, BI &amp; Forensic Audit</div>
+    </div>
+    
+                </div>
+            </section>
+
+            <!-- Core Industry Modules & Business Capabilities -->
+            <section class="section-block" id="modules">
+                <div class="section-header">
+                    <div>
+                        <h2>🏗️ Core Industry Modules & Business Capabilities</h2>
+                        <p>All modules are collapsed by default for clean browsing. Click any module header (or use "Expand All" above) to inspect its capabilities and reports.</p>
+                    </div>
+                </div>
+                
+    <article class="module-card collapsed searchable-section" id="module-1">
+        <div class="module-card-header" onclick="toggleModule('module-1')">
+            <div class="module-title-group">
+                <span class="module-badge">🗺️ Land &amp; Patwar</span>
+                <div>
+                    <h3>Land Acquisition, Procurement &amp; Revenue (Patwar) Record Management</h3>
+                    <p class="module-subtitle">Manages raw land acquisition from landowners and investors, traditional revenue/Patwar land hierarchies, inheritance/mutation tracking, land payment schedules, and litigation records.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Revenue / Patwar Land Record Hierarchy (<code>Mouza</code>, <code>Khasra</code>, <code>Khewat</code>, <code>Khatoni</code>)</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Mouza (Revenue Estate / Village) Master:</strong> Define and manage revenue estates and villages where housing society or project raw land is located, tracking total acreage, boundaries, and acquisition targets per Mouza.</li><li class="feature-item"><strong>Khewat (Ownership Account) Tracking:</strong> Record and manage landowner family/group ownership accounts (<em>Khewat numbers</em>), total shared area, and individual share ratios within each Mouza.</li><li class="feature-item"><strong>Khatoni (Cultivator / Occupancy Holding) Tracking:</strong> Maintain detailed occupancy and possession records (<em>Khatoni numbers</em>) linked to each Khewat, identifying actual physical possession holders and tenancy rights.</li><li class="feature-item"><strong>Khasra (Survey / Plot Number) Inventory:</strong> Maintain granular survey plot records (<em>Khasra numbers</em>) with exact measurement units (Kanal, Marla, Sarsai, Karam, Sq.Ft, Acre), soil/land classification, boundary coordinates, and acquisition status.</li><li class="feature-item"><strong>Warasat (Inheritance &amp; Mutation / Intiqal) Management:</strong> Record legal inheritance mutations (<em>Intiqal-e-Warasat</em>), succession trees, legal heirs&#x27; fractional shares, and mutation approval statuses across revenue records.</li><li class="feature-item"><strong>Land Partners &amp; Joint Venture (JV) Shares:</strong> Manage co-owners, joint landholders, and investor equity/land-sharing ratios in raw land parcels.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Land Procurement, Landowner Contracts &amp; Seller Ledgers</h4>
+                    <span class="item-count">8 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Landowner (Seller / Honor) Profile Creation:</strong> Capture complete landowner KYC including Name, Father/Husband Name, CNIC, Biometrics, Photographs, Contact Details, Bank Account Info, and legal representative/attorney details.</li><li class="feature-item"><strong>Land Acquisition Contracts &amp; Sales Agreements:</strong> Draft and store raw land purchase agreements (<em>Bayana / Agreement to Sell / Sale Deed</em>), specifying Khasra numbers, rate per Acre/Kanal/Marla, total contract value, token money, and registry deadlines.</li><li class="feature-item"><strong>Land Buying via Standard Purchase Invoices (PI):</strong> Process land acquisition directly through the ERP procurement and accounting engine to capitalize raw land inventory on the balance sheet.</li><li class="feature-item"><strong>Land Payment Installment Plans &amp; Barter/Plot Adjustments:</strong> Configure multi-stage cash payout schedules or land-for-developed-plots barter commitments for landowners.</li><li class="feature-item"><strong>Land Payments with Proof Attachments &amp; Seller Ledgers:</strong> Record cash, cheque, pay-order, and bank transfer payments to landowners with scanned payment proofs, acknowledgment receipts, and real-time Seller Account Ledgers.</li><li class="feature-item"><strong>Land Title &amp; Transfers History:</strong> Maintain an auditable chronological chain of title transfers, registries, and mutations from original landowners to the society/company.</li><li class="feature-item"><strong>Third-Party / Broker Commission on Land Procurement:</strong> Calculate, approve, and disburse land consolidator/broker commissions linked to specific Khasra/Mouza acquisitions.</li><li class="feature-item"><strong>Land Litigation, Stay Orders &amp; Expense Tracking:</strong> Track court cases, stay orders, boundary disputes, legal counsel fees, stamp duty, and registry expenses against specific land parcels.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-2">
+        <div class="module-card-header" onclick="toggleModule('module-2')">
+            <div class="module-title-group">
+                <span class="module-badge">📐 Town Planning &amp; GIS</span>
+                <div>
+                    <h3>Project Setup, Town Planning, Inventory &amp; Interactive GIS / Digital Mapping</h3>
+                    <p class="module-subtitle">Manages multi-project hierarchies (housing societies, phases, blocks, streets, high-rise towers, and floors), plot/unit master inventory, and interactive web/mobile GIS maps for visual plot selection and booking.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Multi-Project, Phase, Block, Street &amp; High-Rise Tower Hierarchy</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Multi-Project Enterprise Capacity:</strong> Manage 100+ concurrent real estate projects, housing schemes, commercial plazas, and apartment towers with both isolated project books and consolidated executive dashboards.</li><li class="feature-item"><strong>Town Planning Hierarchy (Horizontal Developments):</strong> Configure Society $\rightarrow$ Sub-Project $\rightarrow$ Phase $\rightarrow$ Sector $\rightarrow$ Block (e.g., <em>Block A, Block A Commercial, Overseas Block, Executive Block, General Block</em>) $\rightarrow$ Street / Lane / Road Width (<em>30&#x27; Wide Road, 50&#x27; Wide Road, Main Boulevard</em>) $\rightarrow$ Plot.</li><li class="feature-item"><strong>Vertical High-Rise Hierarchy (Malls, Towers &amp; Apartments):</strong> Configure Project $\rightarrow$ Tower / Building $\rightarrow$ Floor (Basement, Ground, Mezzanine, 1st–Nth Floor, Penthouse) $\rightarrow$ Unit (Shop, Kiosk, Food Court/Canteen, Office, Studio/1/2/3/4-Bed Apartment, Parking Slot) with floor-by-floor summary ribbons and visual status grids.</li><li class="feature-item"><strong>Multi-Level Location Categorization:</strong> Support up to 7 hierarchical levels of spatial and administrative location coding across properties and fixed assets.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Property, Plot &amp; Unit Inventory Master</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Multi-Category Property Support:</strong> Manage Residential Plots, Commercial Plots, Open/General Files, Constructed Houses, Villas, Farmhouses, Apartments/Flats, Retail Shops, Corporate Offices, Warehouses, and Amenity Sites (Parks, Mosques, Schools, Graveyards, Commercial Zones).</li><li class="feature-item"><strong>Granular Unit Attributes:</strong> Store unique Property ID, Plot/Unit Number, Street/Floor, Dimensions (Front $\times$ Depth), Total Area (Marla, Kanal, Sq.Yd, Sq.Ft, Sq.M), Base Rate per Sq.Ft / Marla, and Lump Sum Gross Value.</li><li class="feature-item"><strong>Location Preferences &amp; Prime / Category Extra Charges:</strong> Define percentage or fixed prime location surcharges for <strong>Corner Plots</strong>, <strong>Park Facing</strong>, <strong>Main Boulevard</strong>, <strong>Three-Side Open</strong>, <strong>West Open</strong>, or <strong>Lobby/Atrium Facing</strong> units.</li><li class="feature-item"><strong>Pricing History &amp; Plan Linkage:</strong> Track historical price revisions over time and link eligible installment plan templates to each unit category.</li><li class="feature-item"><strong>Real-Time Inventory Status Lifecycle:</strong> Track and color-code live unit states: <em>Available / Vacant</em>, <em>On Hold</em>, <em>Reserved (Token Paid)</em>, <em>Booked</em>, <em>Allotted</em>, <em>Possession Ready</em>, <em>Handed Over / Sold</em>, <em>Under Construction</em>, <em>Rented / Leased</em>, <em>Transferred</em>, <em>Cancelled</em>, <em>Terminated</em>, <em>Merged</em>, <em>Blocked / Under Litigation</em>.</li><li class="feature-item"><strong>Property Media &amp; Legal Attachments:</strong> Attach site photographs, 2D/3D floor plans, architectural layouts, and title documents to each inventory record.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Interactive Digital Society Map, GIS &amp; Online Plot Booking (OMP)</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Master Map Cutting as per Block:</strong> Slice master AutoCAD/GIS town-planning layouts into interactive block-level digital maps for fast browser and mobile rendering.</li><li class="feature-item"><strong>Spatial Plot X &amp; Y Coordinate Mapping:</strong> Assign exact polygon/point X &amp; Y coordinates to every plot on the visual map canvas so each plot is clickable and interactive.</li><li class="feature-item"><strong>Google Maps Geo-Location &amp; Multi-Level Drilldown:</strong> Overlay society master plans onto real-world Google Maps coordinates with interactive drilldown from Society Overview $\rightarrow$ Phase $\rightarrow$ Block $\rightarrow$ Street $\rightarrow$ Individual Plot.</li><li class="feature-item"><strong>Live Color-Coded Availability Overlay:</strong> Display real-time plot statuses (<em>Available, Hold, Booked, Sold, Reserved</em>) directly on the map across Desktop, Tablet/iPad, and Android/iOS devices.</li><li class="feature-item"><strong>Multi-Parameter Map Search &amp; Highlighting:</strong> Instantly filter and highlight plots on the visual map by Plot/Property No, Type (Residential/Commercial), Block, Size (5 Marla, 10 Marla, 1 Kanal, etc.), Category (Corner, Park Facing), and Status.</li><li class="feature-item"><strong>Real-Time Digital Hold, Book &amp; Un-Mark from Map:</strong> Authorized sales staff, marketing agencies, and registered dealers can click an available plot on the map to place a temporary <strong>Hold</strong> or initiate a <strong>Booking</strong> (instantly locking the plot across all users to prevent double-booking) or <strong>Un-Mark</strong> to release an expired hold back to available inventory.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-3">
+        <div class="module-card-header" onclick="toggleModule('module-3')">
+            <div class="module-title-group">
+                <span class="module-badge">📣 Digital Marketing</span>
+                <div>
+                    <h3>Digital Marketing, Lead Generation &amp; Real Estate E-Commerce</h3>
+                    <p class="module-subtitle">Covers omni-channel ad campaign lead capture, digital marketing funnels, and self-service online property e-commerce.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Multi-Channel Lead Capture &amp; Marketing Funnel Management</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Automated Social Media Lead Form Sync:</strong> Real-time webhook/API integration with <strong>Facebook Lead Ads</strong>, <strong>Instagram</strong>, and <strong>TikTok</strong> lead forms to automatically ingest prospect Name, Phone, Email, City, Campaign/Ad-Set Name, and Timestamp into the CRM.</li><li class="feature-item"><strong>Property Portal &amp; Web Inquiry Capture:</strong> Automatic lead ingestion from real estate portals (e.g., Zameen.com), project landing pages, website contact forms, walk-in reception desks, inbound call centers, and client referrals.</li><li class="feature-item"><strong>Structured Real Estate Digital Conversion Workflow:</strong> Campaign tracking across Attention/Content $\rightarrow$ Interest/Niche Targeting $\rightarrow$ Analytics &amp; Lead Capture $\rightarrow$ Desire/Offer Presentation $\rightarrow$ Retention/Lifestyle Positioning $\rightarrow$ Action/Booking Conversion.</li><li class="feature-item"><strong>Campaign ROI &amp; Channel Attribution Analytics:</strong> Track cost-per-lead, lead quality, and booking conversion rates across SEO, Google PPC/Display Ads, Social Media Campaigns, Drone/Video Reels, Influencer Marketing, and Property Expos.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Real Estate E-Commerce &amp; Online Self-Service Booking</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Online Property Storefront:</strong> Publish live available plots, files, floors, and apartments to the public website and customer portal with interactive floor/block selectors and payment plan calculators.</li><li class="feature-item"><strong>Direct Online Checkout &amp; Payment Gateway Integration:</strong> Allow overseas and local buyers to reserve or book units online 24/7, upload KYC documents (CNIC/Passport), and pay token/down-payment amounts via <strong>Credit/Debit Card</strong> or <strong>IBFT (Inter-Bank Fund Transfer)</strong> with instant inventory locking.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-4">
+        <div class="module-card-header" onclick="toggleModule('module-4')">
+            <div class="module-title-group">
+                <span class="module-badge">🤖 CRM &amp; AI Chatbot</span>
+                <div>
+                    <h3>Real Estate CRM, Property Matching (REMS), WhatsApp Automation &amp; AI Agents</h3>
+                    <p class="module-subtitle">Manages the complete prospect-to-buyer relationship, secondary-market buyer/seller property matching, office visit check-ins, WhatsApp Business API automation, and 24/7 bilingual (Urdu + English) AI sales agents.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Lead &amp; Opportunity Pipeline Management (<code>Ladder CRM</code> / Core CRM)</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>360° Prospect &amp; Client Profiling:</strong> Store detailed buyer preferences including target budget range, preferred project/block/location, plot/unit size, investment vs. end-use intent, lead source, call notes, and historical communications.</li><li class="feature-item"><strong>Visual Sales Pipeline &amp; Deal Stages:</strong> Track leads through configurable stages (<em>New Inquiry $\rightarrow$ Contacted $\rightarrow$ Qualified $\rightarrow$ Site/Office Visit Scheduled $\rightarrow$ Quotation/Plan Shared $\rightarrow$ Token/Negotiation $\rightarrow$ Won/Booked $\rightarrow$ Lost/Cold</em>).</li><li class="feature-item"><strong>Automated Lead Distribution &amp; Team Routing:</strong> Assign leads via round-robin, project specialization, or manual manager allocation; transfer leads between agents with full audit history and role-based data isolation.</li><li class="feature-item"><strong>Follow-Up Tasks, Call Queues &amp; Mobile Reminders:</strong> Schedule follow-up calls, meetings, and tasks with automated push/SMS/email notifications and daily/tomorrow/overdue task queues on web and Android/iOS apps.</li><li class="feature-item"><strong>Client Categorization &amp; Segmentation:</strong> Segment leads and clients (<em>Category A/B/C, Overseas Investor, Dealer, VIP, High-Net-Worth</em>) for targeted broadcast campaigns.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Site Visits &amp; Office Visit Check-In Management</h4>
+                    <span class="item-count">3 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Site Visit Booking &amp; Dual Reminders:</strong> Schedule guided project site visits and automatically send date/time/location reminders to both the prospect and the assigned sales representative.</li><li class="feature-item"><strong>Office Visit Reception &amp; Visitor Check-In:</strong> Log scheduled office appointments and walk-in visitors at reception, record check-in/check-out times, and notify the assigned sales officer.</li><li class="feature-item"><strong>Daily Lead, Sales &amp; Activity Summaries:</strong> Generate automated end-of-day management summaries covering new leads, calls made, office/site visits conducted, and bookings closed, with one-click CSV/Excel export.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Property Dealing &amp; Automated Buyer-Seller Matching Engine (<code>REMS</code>)</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Secondary Market Seller &amp; Buyer Registries:</strong> Maintain separate databases for resale/agency <strong>Sellers</strong> (listed properties, asking price, plot/unit features) and <strong>Buyers</strong> (budget, desired size, block, category).</li><li class="feature-item"><strong>Automated Property Matching Algorithm:</strong> Instantly cross-match buyer requirements against available seller listings and primary inventory to recommend matching plots, houses, or commercial units to sales agents.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>WhatsApp Business API Automation</h4>
+                    <span class="item-count">3 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Instant Automated Welcome &amp; Follow-Up Sequences:</strong> Trigger immediate WhatsApp responses containing project details, location pins, and payment plans as soon as a lead submits an inquiry.</li><li class="feature-item"><strong>Bulk Promotional Broadcasts &amp; Payment Alerts:</strong> Send segmented WhatsApp broadcasts for new block launches, balloting announcements, and installment reminders.</li><li class="feature-item"><strong>Embedded CRM WhatsApp Chat Timeline:</strong> View and reply to customer WhatsApp messages directly inside the CRM lead/client profile with full media and chat history logging.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Bilingual (Urdu + English) Real Estate AI Chatbot &amp; AI Summarization</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>24/7 Bilingual Conversational AI (Urdu &amp; English):</strong> Understands and replies naturally in both <strong>Urdu</strong> (including Roman Urdu and Urdu script) and <strong>English</strong> across website chat and WhatsApp.</li><li class="feature-item"><strong>Live ERP Database Inventory Lookup:</strong> Answers real-time natural-language questions (e.g., <em>&quot;Is a 5 Marla plot available in Block B?&quot;</em> or <em>&quot;Show available corner shops on Ground Floor&quot;</em>) by querying live inventory.</li><li class="feature-item"><strong>Automated Price &amp; Installment Plan Calculation:</strong> Shares unit prices, down-payment requirements, and monthly/quarterly installment breakdowns instantly without human intervention.</li><li class="feature-item"><strong>Self-Service Client Ledger &amp; Due-Date Verification:</strong> Enables existing customers to securely verify their paid installments, outstanding balance, and next due date via chat.</li><li class="feature-item"><strong>Autonomous After-Hours Lead Capture &amp; Site Visit Scheduling:</strong> Captures prospect contact details 24/7, books site visit slots directly onto the sales team&#x27;s calendar, and alerts the assigned agent the next morning.</li><li class="feature-item"><strong>AI Lead Qualification, Priority Scoring &amp; Conversation Summaries:</strong> Automatically scores lead intent, generates concise bulleted AI summaries of long chat threads, ranks daily follow-up priorities, and seamlessly hands over high-intent buyers to human closers.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-5">
+        <div class="module-card-header" onclick="toggleModule('module-5')">
+            <div class="module-title-group">
+                <span class="module-badge">🤝 Dealers &amp; Commissions</span>
+                <div>
+                    <h3>Dealer, Sub-Dealer, Platter, Bulk File &amp; Commission Management</h3>
+                    <p class="module-subtitle">Manages external real estate agencies, master dealers, sub-dealers, wholesale file &quot;platters&quot;, bulk bookings, rebates, discounts, and multi-tier commission settlements.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Dealer, Sub-Dealer &amp; Agency Network Profiling</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Multi-Tier Dealer Hierarchy:</strong> Register and manage Master Dealers, Sub-Dealers, Authorised Marketing Partners/Agencies, Freelance Brokers, Investors, and Internal Sales Staff with complete KYC, agency agreements, and security deposits.</li><li class="feature-item"><strong>Master &amp; Sub-Dealer Financial Ledgers:</strong> Maintain real-time Master Ledgers and Sub-Ledgers tracking dealer quotas, sales volumes, rebates, advances, and commission balances.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Wholesale File Platters &amp; Bulk Dealer Operations</h4>
+                    <span class="item-count">8 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>File Platter Creation &amp; Allocation:</strong> Group/bundle multiple plot files (e.g., mixes of 3, 5, 10 Marla and Commercial files) into wholesale <strong>Platters</strong> and assign or un-assign platters to dealers and institutional investors.</li><li class="feature-item"><strong>Open File &amp; Bulk Plot Booking:</strong> Support open/unassigned dealer file issuance and bulk plot reservations.</li><li class="feature-item"><strong>Bulk Billing, Bulk Agreements &amp; Bulk Receipts:</strong></li><li class="feature-item">Generate <strong>Multi-Sales Invoices</strong> for bulk dealer file bookings in a single batch.</li><li class="feature-item">Generate <strong>Multi-New Installment Agreements</strong> across entire platters simultaneously.</li><li class="feature-item">Process <strong>Multi-Receiving</strong> of payments distributed across multiple dealer-held files.</li><li class="feature-item"><strong>End-to-End Dealer File Processing Workflow:</strong></li><li class="feature-item">File Receiving (Single &amp; Bulk Multi-Upload) $\rightarrow$ File Verification &amp; Processing $\rightarrow$ Management Approval $\rightarrow$ Physical/Digital File Handover $\rightarrow$ Confirmation Letter Issuance.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Commission, Rebate, Discount &amp; Target Management</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Configurable Commission Contracts &amp; File Binding:</strong> Define flat or percentage-based commission structures (<code>Commission %</code> auto-calculating <code>Commission Amount</code> on <code>Net Sales Price</code>) for agents, dealers, marketing companies, and internal staff, linked directly to each booking file (<code>CC#</code>).</li><li class="feature-item"><strong>Milestone-Gated Commission Payouts:</strong> Enforce payment eligibility rules (e.g., commission unlocks only after customer clears full Down Payment or reaches a specified <code>% Received</code> threshold).</li><li class="feature-item"><strong>Dealer Rebate &amp; Special Authority Management:</strong> Process volume rebates, trading discounts, and dealer authority allocations on bulk file clearances.</li><li class="feature-item"><strong>Structured Discount Management Engine:</strong> Configure Discount Types, Discount Eligibility Criteria, Scheduled/Promotional Discounts, and Agent-specific Discount ceilings with mandatory manager approval workflows.</li><li class="feature-item"><strong>Dealer / Broker Sales &amp; Commission Reports:</strong> Set monthly/quarterly sales targets per dealer/agent and generate comprehensive <strong>Dealer / Broker Commission Reports</strong> (filterable by individual broker or all brokers) displaying <code>CC#</code>, <code>Unit No</code>, <code>Floor / Block</code>, <code>Client Name</code>, <code>Contact</code>, <code>Dealer / Broker</code>, <code>Net Sales Price</code>, <code>Received Amount</code>, <code>Balance Due</code>, <code>% Received</code>, <code>Commission %</code>, and <code>Commission Amount</code>.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-6">
+        <div class="module-card-header" onclick="toggleModule('module-6')">
+            <div class="module-title-group">
+                <span class="module-badge">📝 Registration &amp; Booking</span>
+                <div>
+                    <h3>File / Unit Reservation, Token, Biometric Booking &amp; Sale Agreements</h3>
+                    <p class="module-subtitle">Covers the complete front-office booking workflow from initial token/reservation to customer biometric registration, joint-ownership percentage splits, nominee management, and security-printed registration certificates.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Plot / File Reservation &amp; Token Lifecycle</h4>
+                    <span class="item-count">3 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Reservation Form &amp; Challan Issuance:</strong> Create plot/file reservation requests and print payment challan forms with configurable validity periods.</li><li class="feature-item"><strong>Token Receipt &amp; Inventory Locking:</strong> Record token money via Cash/Bank Receipt Voucher, automatically changing unit status to <em>Reserved</em> so no other user can book the unit.</li><li class="feature-item"><strong>Automated Reservation Expiry &amp; Token Refund:</strong> Monitor reservation expiration timestamps; automatically expire unconfirmed holds and process <strong>Reservation Token Return</strong> vouchers when bookings do not proceed.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Customer Registration, Biometrics, Joint Partners &amp; Nominees</h4>
+                    <span class="item-count">10 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Complete Customer KYC &amp; Live Biometrics:</strong></li><li class="feature-item">Capture Customer Name, Father/Husband Name, CNIC/NICOP/Passport No, Date of Birth, Gender, Nationality, Mailing &amp; Permanent Address, Phone/Mobile/WhatsApp, Email, Client Photograph, Category (A/B/C), Reference/Referred By, and Assigned Booking Officer.</li><li class="feature-item"><strong>Live Biometric Fingerprint Registration &amp; Verification:</strong> Capture and verify customer thumbprints via USB biometric scanners on desktop or via the ERP Mobile App at booking, transfer, and possession stages.</li><li class="feature-item"><strong>Unique File / Registration Number (<code>CC#</code>) Generation:</strong> Automatically generate structured, unique Registration / File / Cost-Center numbers (<code>CC#</code>, e.g., <code>R-05M-6831</code>) tied to the customer&#x27;s CNIC and project block.</li><li class="feature-item"><strong>Joint Ownership / Partner Management (with Percentage Splits):</strong></li><li class="feature-item">Register multiple joint owners/partners on a single file or property with explicit ownership percentage splits (e.g., <em>Partner A 50%, Partner B 50%</em>) and individual CNICs, photos, and biometrics.</li><li class="feature-item">Execute formal workflows for <strong>Add New Partner $\rightarrow$ Approval</strong> and <strong>Partner Termination Request $\rightarrow$ Approval</strong>.</li><li class="feature-item"><strong>Nominee (Next-of-Kin / Successor) Lifecycle Management:</strong></li><li class="feature-item">Capture Nominee Name, Nominee CNIC, Relation with Applicant, Contact Number, and <strong>Nominee Photograph</strong>.</li><li class="feature-item">Execute formal workflows for <strong>Add New Nominee $\rightarrow$ Approval</strong> and <strong>Nominee Termination $\rightarrow$ Approval</strong>.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Unit Pricing, Sale Agreements &amp; Booking Registers</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Dynamic Unit Pricing &amp; Discount Calculation:</strong> Select Project, Block/Floor, Unit/Plot No, Unit Type (<em>Flat, Shop, Office, Plot</em>), Total Area, Base Rate, Prime Location Charges, Gross Total Value, and Discount Allowed (% or fixed) to auto-compute the final <strong>Net Selling Price</strong>.</li><li class="feature-item"><strong>Booking Document Scanning &amp; Attachment:</strong> Scan and attach CNIC copies, passport photos, signed application forms, affidavits, and payment instruments directly to the booking record.</li><li class="feature-item"><strong>Sale Agreement &amp; Certificate of Registration Printing:</strong> Generate and print customized <strong>Sale Agreements</strong>, <strong>Allotment Letters</strong>, and security-watermarked <strong>Certificates of Registration</strong> upon multi-stage booking approval.</li><li class="feature-item"><strong>Anti-Forgery File Security Checks &amp; Online Verification:</strong> Embed security printing checks/QR codes on physical files and provide online verification of file authenticity.</li><li class="feature-item"><strong>Tamper-Proof View-Only File Mode &amp; Multi-Key Global Search:</strong> Saved booking files open in read-only mode by default to prevent accidental modification by staff; support instant global lookup by <strong>File Number (<code>CC#</code>)</strong>, <strong>Unit/Plot Number</strong>, <strong>Client Name</strong>, or <strong>CNIC</strong>.</li><li class="feature-item"><strong>Booked Files Register &amp; Member Status Reports:</strong> One-click master register of all booked files/units displaying <code>CC#</code>, <code>Booking Date</code>, <code>Unit No</code>, <code>Floor / Block</code>, <code>Unit Type</code> (<code>Shop, Flat, Office, Plot</code>), <code>Client Name</code>, <code>Father / Husband Name</code>, <code>Contact No</code>, and <code>CNIC</code>, plus Member Search &amp; Status Reports.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-7">
+        <div class="module-card-header" onclick="toggleModule('module-7')">
+            <div class="module-title-group">
+                <span class="module-badge">💳 Installments &amp; Recovery</span>
+                <div>
+                    <h3>Installment Plans, Collections, PDC Management, LPS/Fines, Recovery &amp; Legal Notices</h3>
+                    <p class="module-subtitle">Manages flexible payment schedules, construction-milestone billing, cash/online/PDC collections, late payment surcharges (LPS), recovery officer sheets, and legal defaulter notices.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Dynamic Installment Plan &amp; Construction-Stage Schedule Engine</h4>
+                    <span class="item-count">11 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Flexible Payment Schedule Generator:</strong> Build custom schedules or apply standard templates supporting <strong>Token</strong>, <strong>Booking / Down Payment (% or amount)</strong>, <strong>Confirmation Charges</strong>, <strong>Allocation Charges</strong>, <strong>Digging / Development Charges</strong>, <strong>Periodic Installments</strong> (<em>Monthly, Bi-Monthly, Quarterly, Half-Yearly/Bi-Annual, Annual</em>), <strong>Balloon Payments</strong>, and <strong>Possession % Payment</strong>.</li><li class="feature-item"><strong>Construction-Linked Milestone Billing (<code>ON DUE / FUTURE PLAN</code>):</strong></li><li class="feature-item">Define construction-linked payment stages (e.g., <em>Start of Work, Excavation/Digging, Plinth/Foundation, Ground Slab, Nth Floor Slab, Brick/Block Work, Plaster, Grey Structure Completion, Finishing</em>) at the end of the client&#x27;s schedule.</li><li class="feature-item">Milestone amounts remain unbilled (<em>On Due / Future Plan</em>) until the engineering team marks that construction stage complete on site, automatically making the milestone amount fall due on that date.</li><li class="feature-item"><strong>Single-Schedule Auto-Synchronized Client Ledger:</strong></li><li class="feature-item">Maintain one unified schedule per booking where scheduled dues, partial or full receipts, adjustments/waivers, cumulative receivables, and running balances synchronize automatically without manual ledger postings.</li><li class="feature-item"><strong>Oldest-Due-First Auto-Allocation:</strong> Incoming payments automatically settle the oldest unpaid installment or partial balance first (with option for manual installment selection).</li><li class="feature-item"><strong>Mid-Schedule <code>CURRENT ACCOUNT POSITION</code> Line:</strong> Automatically computes total amount due up to the current month, total received to date, net current arrears or advance paid, and overall <code>% Paid</code>.</li><li class="feature-item"><strong>Plan Revisions, Rescheduling &amp; Sub-Agreements:</strong></li><li class="feature-item">Modify or reschedule active payment plans with supervisor approval and full audit logging.</li><li class="feature-item">Create <strong>Sub-Agreements</strong> (splitting a major installment or development charge into its own secondary sub-installment schedule with an independent receipt history).</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Multi-Mode Collection, Online Bank Sync &amp; Post-Dated Cheques (PDC)</h4>
+                    <span class="item-count">11 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Omni-Channel Payment Receiving:</strong> Collect payments via Cash, Crossed Cheque, Pay Order / Demand Draft, Online Bank Deposit, IBFT, Credit/Debit Card Payment Gateway, or Adjustment Voucher.</li><li class="feature-item"><strong>Bank Statement Upload &amp; Temporary Vouchers Dashboard:</strong> Upload bank statements for online customer deposits, review unmatched/matched transfers in a <strong>Temporary Vouchers Dashboard</strong>, and post <strong>Bank Receipt Vouchers (BRV)</strong> against auto or selected installments.</li><li class="feature-item"><strong>Post-Dated Cheque (PDC) Vault &amp; Clearance Lifecycle:</strong></li><li class="feature-item">Issue <strong>PDC Receipt Acknowledgements</strong> when customers submit post-dated cheque books/bundles upfront.</li><li class="feature-item">Track cheque maturity dates, deposit due cheques into designated bank accounts, and manage <strong>Cheque Statuses</strong> (<em>In Vault, Deposited, Honored/Cleared, Dishonored/Bounced, Returned/Replaced</em>).</li><li class="feature-item">Automatically post <strong>Post-Dated Bank Receipt Vouchers (PBRV)</strong> to the client ledger upon cheque clearance or reverse/penalize upon dishonor.</li><li class="feature-item"><strong>Multi-Installment &amp; Multi-Property Single Receipt:</strong> Allocate a single lump-sum payment receipt across multiple installments or across multiple plots/shops/units owned by the same client.</li><li class="feature-item"><strong>Controlled Receipt Editing, Reversal, Re-Adjustment &amp; Voiding:</strong></li><li class="feature-item">Authorized administrators can process <strong>Installment Reversals</strong>, <strong>Installment Re-Adjustments</strong> (moving a payment between files/units), or <strong>Edit / Void Receipts</strong> (updating Amount, Payment Mode, Bank Name, Instrument/Cheque No, Date, or Remarks).</li><li class="feature-item">Client ledgers and recovery reports recalculate instantaneously, while every edit or void is permanently recorded in the <strong>Immutable Forensic Audit Trail</strong>.</li><li class="feature-item"><strong>Duplicate Receipt &amp; Online Receipt Handover:</strong> Print watermarked duplicate receipts and dispatch digital e-receipts via SMS/WhatsApp/Email/Portal.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Late Payment Surcharge (LPS) / Fines &amp; Waiver Workflows</h4>
+                    <span class="item-count">3 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Automated LPS / Overdue Fine Calculation:</strong> Automatically calculate Late Payment Surcharges (LPS) or overdue installment fines based on configurable grace days and daily/monthly penalty percentages at the time of billing or payment collection.</li><li class="feature-item"><strong>Multi-Step LPS Discount / Waiver Approval Workflow:</strong></li><li class="feature-item">LPS Discount Request Initiation $\rightarrow$ Management Review &amp; LPS Discount Approval $\rightarrow$ Adjusted LPS Bill Generation $\rightarrow$ LPS Settlement Receipt.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Recovery Management, Defaulter Ageing, Legal Notices &amp; Recovery Reports</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Recovery Sheet Generation &amp; Officer Allocation:</strong> Generate monthly recovery sheets (<code>CC#</code>, <code>Unit No</code>, <code>Floor / Block</code>, <code>Client Name</code>, <code>Contact No</code>, <code>Total Current Dues</code>, <code>Received Amount</code>, <code>Net Current Dues to Collect</code>, <code>Recovery Remarks</code>), assign portfolios to recovery officers, and monitor live collection progress on an integrated <strong>Recovery Dashboard</strong>.</li><li class="feature-item"><strong>Future Collection Forecasting &amp; Plan-vs-Receipt Variance Reports:</strong> Project expected cash inflows over upcoming months/quarters and compare Installment Plan vs. Actual Receipt variances.</li><li class="feature-item"><strong>Irregular / Defaulter Client Filtering by Ageing Buckets:</strong> Filter defaulting files by <code>2+ Months Overdue</code>, <code>3+ Months Overdue</code>, <code>4+ Months Overdue</code>, or custom ageing intervals, displaying <code>CC#</code>, <code>Unit No</code>, <code>Floor/Block</code>, <code>Client Name &amp; Contact</code>, <code>Dealer/Broker</code>, <code>Overdue Months</code>, <code>Total Dues</code>, <code>Received Amount</code>, <code>Balance Due</code>, <code>Last Payment Date</code>, and <code>Current Notice Status</code>.</li><li class="feature-item"><strong>Escalating Legal Notice Generation &amp; Batch Printing:</strong></li><li class="feature-item">Track and issue three escalating formal notice stages:</li><li class="feature-item">One-click <strong>Print Legal Notice / Save PDF</strong> formatted directly for project letterhead with a positioned postal dispatch address box and automated <strong>Envelope Printing</strong>.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-8">
+        <div class="module-card-header" onclick="toggleModule('module-8')">
+            <div class="module-title-group">
+                <span class="module-badge">🎲 Plot Balloting</span>
+                <div>
+                    <h3>Computerized Plot Balloting &amp; Allotment Management</h3>
+                    <p class="module-subtitle">Covers high-speed automated plot/unit balloting, ceremony presentation visuals, and provisional/final allotment certificates.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>High-Speed Computerized Balloting Engine</h4>
+                    <span class="item-count">11 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Ultra-Fast Bulk Balloting Execution:</strong> Execute cryptographic/algorithmic random balloting for <strong>10,000+ plots within a single minute</strong>.</li><li class="feature-item"><strong>Configurable Balloting Eligibility &amp; Matching Rules:</strong></li><li class="feature-item"><strong>Balloting Category Segregation:</strong> Ballot separately by sector/category (<em>Residential, Commercial, Overseas Block, General Block, Executive Block</em>).</li><li class="feature-item"><strong>Plot Size Matching:</strong> Match eligible file registrations strictly to corresponding plot sizes (<em>3 Marla, 5 Marla, 7 Marla, 10 Marla, 1 Kanal, 2 Kanal</em>).</li><li class="feature-item"><strong>Payment Threshold Eligibility:</strong> Filter ballot pool by minimum <code>% Paid</code> or clearance of balloting charges.</li><li class="feature-item"><strong>Member Location Preferences:</strong> Factor in applicant location/category preferences during allocation.</li><li class="feature-item"><strong>File Clubbing (Adjacent Plot Pairing):</strong> Group/club multiple files owned by the same applicant or family members so the balloting engine allocates adjacent/paired plots together.</li><li class="feature-item"><strong>Live Balloting Ceremony Mode:</strong> Public event presentation screen featuring <strong>customized GIF animations, live shuffling visuals, and sound effects</strong> for auditorium/live-streamed balloting ceremonies.</li><li class="feature-item"><strong>Balloting Result Printing &amp; Instant Omni-Channel Alerts:</strong></li><li class="feature-item">Generate official Balloting Result Registers and individualized <strong>Balloting Letters</strong>.</li><li class="feature-item">Immediately dispatch personalized <strong>SMS, WhatsApp, and Email notifications</strong> to successful allottees with Customer Name, Registration/File No (<code>Reg.No</code>), and newly allotted Plot Number &amp; Block.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Provisional &amp; Final Allotment Lifecycle</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Provisional Allotment Workflow:</strong> Provisional Allotment Initiation $\rightarrow$ Verification &amp; Management Approval $\rightarrow$ <strong>Provisional Allotment Certificate Printing</strong> $\rightarrow$ Provisional Allotment Cancellation Request &amp; Approval.</li><li class="feature-item"><strong>Final Allotment Letter Issuance:</strong> Generate and print formal <strong>Final Allotment Letters / Certificates</strong> upon completion of installment and balloting requirements.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-9">
+        <div class="module-card-header" onclick="toggleModule('module-9')">
+            <div class="module-title-group">
+                <span class="module-badge">⚖️ Transfers &amp; Legal</span>
+                <div>
+                    <h3>Post-Sale Legal &amp; File Operations (Transfer, Merge, NOC, Authority Letter, Termination &amp; Buy-Back)</h3>
+                    <p class="module-subtitle">Manages secondary-market property ownership transfers, file merging/amalgamation, authority letters, multi-purpose NOCs, cancellations, deductions, refunds, and company buy-backs.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Property / File Ownership Transfer Lifecycle</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>End-to-End Transfer Workflow:</strong></li><li class="feature-item"><strong>Seller &amp; Buyer Affidavits</strong></li><li class="feature-item"><strong>Official Transfer Application Form</strong></li><li class="feature-item"><strong>Buyer Undertaking</strong></li><li class="feature-item"><strong>Tripartite / Transfer Agreement</strong></li><li class="feature-item"><strong>Transfer Intimation Letter</strong></li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Plot / File Merging &amp; Re-Activation</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Plot / File Merge (Amalgamation) Workflow:</strong></li><li class="feature-item"><strong>Merge Request Letter:</strong> Customer applies to merge two or more files/plots (e.g., merging two 5-Marla files into one 10-Marla plot, or consolidating paid amounts from multiple under-performing files into a single active file).</li><li class="feature-item"><strong>Automated Accounts Receipt Consolidation:</strong> Automatically transfer and adjust paid installment receipts (less any applicable administrative merge fee) from secondary merged files into the primary active file&#x27;s ledger.</li><li class="feature-item"><strong>Real Estate Management (REM) Approval:</strong> Finalize merge, retire surrendered files, and issue updated payment schedule/agreement.</li><li class="feature-item"><strong>File Re-Activation:</strong> Re-activate blocked, dormant, or cancelled files upon payment of restoration charges and overdue arrears.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Authority Letters &amp; No-Objection Certificates (NOC)</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Authority Letter Lifecycle:</strong> New Authority Request Initiation (authorizing a representative/dealer to act on behalf of an overseas or absent member) $\rightarrow$ Verification &amp; Approval $\rightarrow$ <strong>Authority Letter Printing</strong> $\rightarrow$ Authority Cancellation Request &amp; Approval.</li><li class="feature-item"><strong>Multi-Purpose NOC (No-Objection Certificate) Lifecycle:</strong> NOC Request Initiation (for Building Plan Approval, Construction Start, Utility Connections—Electricity/Gas/Water, Bank Mortgage, or Resale Transfer) $\rightarrow$ Departmental Clearance &amp; Approval $\rightarrow$ <strong>Official NOC Printing</strong>.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>File Cancellation, Termination, Buy-Back &amp; Refund Settlement</h4>
+                    <span class="item-count">7 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Plot / File Termination Workflow:</strong> Initiate formal termination of chronically defaulted files after completion of the legal notice period, subject to management approval.</li><li class="feature-item"><strong>Booking Cancellation, Deduction Calculation &amp; Refund Settlement:</strong></li><li class="feature-item"><strong>Financial Audit Position Review:</strong> Display complete booking summary (<code>Total Net Price</code>, <code>Total Paid Amount</code>, <code>Outstanding Balance</code>) alongside Client and Nominee KYC/photos.</li><li class="feature-item"><strong>Automated Cancellation Deduction Calculation:</strong> Input configurable <strong>Cancellation Deduction (%)</strong> or flat service forfeiture; system auto-calculates <code>Deduction Charges</code> and exact <code>Net Refund Payable</code>.</li><li class="feature-item"><strong>Refund Disbursement Recording:</strong> Capture <code>Refund Payment Mode</code> (e.g., <em>Crossed Cheque, Pay Order, Bank Transfer</em>), <code>Cheque / Slip No</code>, <code>Bank Name</code>, and <code>Reason for Cancellation</code>.</li><li class="feature-item"><strong>One-Click Inventory Release &amp; Legal Output:</strong> Execute <code>Cancel Booking &amp; Release Unit</code> to automatically return the unit/plot to <strong>Vacant Inventory</strong> for immediate re-sale, print both the <strong>Financial Refund Voucher</strong> and the formal <strong>Legal Cancellation Letter</strong>, and log in the File Cancellation &amp; Refund Register.</li><li class="feature-item"><strong>Company Buy-Back Workflow:</strong> Process developer/society buy-backs of files or units with agreed profit/buy-back premium or discount settlements.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-10">
+        <div class="module-card-header" onclick="toggleModule('module-10')">
+            <div class="module-title-group">
+                <span class="module-badge">🔑 Demarcation &amp; Handover</span>
+                <div>
+                    <h3>Demarcation, Possession, Handover &amp; Member Construction Approvals</h3>
+                    <p class="module-subtitle">Manages physical on-ground site measurement (demarcation), excess/short land area billing adjustments, physical possession handover, completion certificates, and member house construction tracking.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Physical Plot Demarcation &amp; Size Variation Billing</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Demarcation Request &amp; Site Survey Parameters:</strong> Initiate plot demarcation prior to possession/construction and record exact on-ground survey measurements (Frontage, Depth, Diagonal, Total Actual Area vs. Booked Area).</li><li class="feature-item"><strong>Automated Size Variation Financial Adjustment:</strong></li><li class="feature-item"><strong>Excess Area (Addition) Billing:</strong> If on-ground plot area exceeds booked size (e.g., 5.35 Marla actual vs. 5.00 Marla booked), automatically calculate the extra area price and generate a <strong>Size Variation Additional Bill</strong>.</li><li class="feature-item"><strong>Short Area (Reduction) Credit/Debit Note:</strong> If on-ground plot area is smaller than booked size, automatically generate an accounting <strong>Adjustment / Credit-Debit Note</strong> reducing the member&#x27;s payable balance.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Possession &amp; Handover Management</h4>
+                    <span class="item-count">3 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Possession Clearance &amp; Handover Workflow:</strong></li><li class="feature-item">Possession Request Initiation $\rightarrow$ Automated verification of 100% installment/development/demarcation clearance $\rightarrow$ Engineering &amp; Management Possession Approval $\rightarrow$ <strong>Official Possession Letter &amp; Site Handover Certificate Printing</strong>.</li><li class="feature-item"><strong>Plot Development &amp; Possession Readiness Reports:</strong> Analytical reports tracking plot-by-plot infrastructure development status (<em>Undeveloped, Under Development, Developed/Possession-Ready, Possession Handed Over</em>).</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Member House Construction Lifecycle &amp; Transition to Maintenance</h4>
+                    <span class="item-count">7 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Member Construction Request &amp; Drawing Approval:</strong> Plot owner submits house/building construction application and architectural drawings for society bylaw approval.</li><li class="feature-item"><strong>In-Process Construction Service Agreement &amp; Auto-Billing:</strong></li><li class="feature-item">Once construction begins on a plot, transition plot status to <em>Construction In-Process</em> and automatically generate a <strong>Construction-Phase Monthly Service Agreement &amp; Auto Monthly Bill</strong> (covering construction water usage, material gate-pass security, debris removal, etc.).</li><li class="feature-item">Print monthly construction utility bills and collect receipts.</li><li class="feature-item"><strong>Construction Completion Certificate &amp; Handover to Maintenance Department:</strong></li><li class="feature-item">Upon final site inspection after house completion, issue the <strong>Building Completion Certificate</strong>.</li><li class="feature-item">Automatically close the construction-phase billing agreement, initiate a standard <strong>Resident Monthly Maintenance Service Agreement</strong>, and shift the property record to the <strong>Society Maintenance &amp; Utility Billing Department</strong>.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-11">
+        <div class="module-card-header" onclick="toggleModule('module-11')">
+            <div class="module-title-group">
+                <span class="module-badge">🏗️ Construction &amp; BOQ</span>
+                <div>
+                    <h3>Developer Construction Management, BOQ, Work Orders, Procurement &amp; Store Inventory</h3>
+                    <p class="module-subtitle">Manages civil and infrastructure construction for builders, developers, and housing societies: project jobs, Bill of Quantities (BOQ) budgeting, contractor work orders, material requisitions, procurement, quality inspection (GRN), and multi-store inventory.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Project Job Creation, BOQ Budgeting &amp; Work Order Management</h4>
+                    <span class="item-count">10 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Project-Wise Jobs &amp; BOQ Estimation:</strong></li><li class="feature-item">Create structured construction jobs per project, phase, block, road, utility network, or tower floor.</li><li class="feature-item">Define detailed <strong>Bills of Quantities (BOQ)</strong> specifying material items, labor tasks, estimated quantities, standard rates, and total budgeted cost per job.</li><li class="feature-item"><strong>Site Construction Phase &amp; Progress Tracking:</strong> Track physical completion percentages across civil phases (<em>Excavation, Foundation/Piling, Plinth, RCC Structure/Slabs, Masonry, MEP Rough-in, Plaster, Flooring, Finishing, External Development</em>).</li><li class="feature-item"><strong>Contractor vs. Self-Construction Work Orders:</strong></li><li class="feature-item">Manage both <strong>In-House / Self-Construction</strong> execution and <strong>Sub-Contractor Work Orders</strong> (recording contractor profiles, contract rates, retention money, running bills/IPC, and payment schedules).</li><li class="feature-item"><strong>Work Order Consumption Control (WIP) &amp; Site Attendance:</strong></li><li class="feature-item">Monitor real-time material issuance and expenses against BOQ budgets to enforce <strong>Work-in-Process (WIP) Consumption Control</strong> and highlight budget variances (<em>At Budget, Under Budget, Over Budget</em>).</li><li class="feature-item">Track dedicated <strong>Work Order Employee &amp; Labor Attendance (<code>W.O Emp. Attendance</code>)</strong> and service logs per job site.</li><li class="feature-item"><strong>Work Order Closing &amp; Fixed Asset Capitalization:</strong> Close completed infrastructure or building work orders and automatically convert/capitalize costs into Fixed Assets or Completed Inventory in the General Ledger.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Construction Procurement &amp; Vendor / Supplier Management</h4>
+                    <span class="item-count">9 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Purchase Demand / Requisition (<code>RQN</code>):</strong> Site engineers or storekeepers raise material Purchase Demands; route through multi-level departmental approval workflows.</li><li class="feature-item"><strong>Supplier Directory &amp; Quotation Comparison (<code>RFQ</code>):</strong> Maintain pre-qualified vendor profiles, material categories, credit terms, and historical performance; log and compare multiple supplier quotations to award optimal rates.</li><li class="feature-item"><strong>Purchase Order (<code>PO</code>) Generation &amp; Tracking:</strong> Auto-generate Supplier-Wise Purchase Orders directly from approved Purchase Demands, tracking <code>PO ID</code>, <code>Requisition ID</code>, <code>Project Name</code>, <code>Vendor Name</code>, <code>Issue Date</code>, <code>Delivery Date</code>, <code>Payment Status</code> (<em>Pending / Paid</em>), and <code>Delivery Status</code> (<em>Pending / Partial / Received</em>).</li><li class="feature-item"><strong>Inward Gate Pass (<code>IGP</code>), Quality Inspection (<code>QC</code>) &amp; Goods Receipt Note (<code>GRN</code>):</strong></li><li class="feature-item"><strong>Inward Gate Pass (IGP):</strong> Log material arrival and delivery vehicles at the site/store gate.</li><li class="feature-item"><strong>Material Quality Inspection (QC):</strong> Inspect delivered materials (e.g., steel tonnage, cement bags, aggregates, electrical fixtures) against PO specifications before acceptance.</li><li class="feature-item"><strong>Goods Receipt Note (GRN):</strong> Generate GRNs supporting <strong>Partial or Full Receiving</strong> (capturing <code>Item</code>, <code>Unit</code>, <code>Requested Qty</code>, <code>Received Qty</code>, <code>Vendor Bill Ref No</code>, <code>Receiving Date</code>), automatically updating project store stock and crediting the Supplier Ledger.</li><li class="feature-item"><strong>Purchase Returns to Suppliers:</strong> Process rejected or excess material returns to vendors with automatic debit note adjustments on the supplier&#x27;s ledger.</li><li class="feature-item"><strong>Vendor Invoice Matching &amp; Supplier Disbursements:</strong> Match supplier bills against PO and GRN quantities and process <strong>Advance Payments</strong>, <strong>Partial Running Payments</strong>, or <strong>Final Post-Delivery Settlements</strong> via Payment Vouchers.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Multi-Store, Warehouse &amp; Site Inventory Management</h4>
+                    <span class="item-count">12 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Departmental Store Issue Requisitions:</strong> Site teams submit Store Requisitions; store managers view pending requisition queues and approve issuances.</li><li class="feature-item"><strong>Material Issue Notes (<code>MIN</code>), Contractor Back-Charges &amp; Outward Gate Pass (<code>OGP</code>):</strong></li><li class="feature-item">Issue materials to site jobs via <strong>Material Issue Notes (Consumption)</strong>.</li><li class="feature-item">Issue materials against specific <strong>Contractor Work Orders with Automatic Back-Charging</strong> (deducting material value from contractor payables).</li><li class="feature-item">Generate <strong>Outward Gate Passes (OGP)</strong> for materials or equipment leaving the store/site.</li><li class="feature-item"><strong>Issued Stock Return, Inter-Store Transfers &amp; Damage Notes:</strong></li><li class="feature-item">Return unused site materials back to the store via <strong>Issued Stock Return Notes</strong>.</li><li class="feature-item">Transfer stock between central warehouses and project site stores via <strong>Material Transfer Notes</strong>.</li><li class="feature-item">Record cement spoilage, breakage, or theft via <strong>Damage / Loss Notes</strong>.</li><li class="feature-item"><strong>Multi-Method Inventory Valuation &amp; Construction Store Reports:</strong></li><li class="feature-item">Support <strong>FIFO</strong>, <strong>LIFO</strong>, <strong>Average</strong>, and <strong>Weighted Average</strong> inventory costing methods.</li><li class="feature-item"><strong>Built-In Construction &amp; Store Reports:</strong> Daily Requisition &amp; Stock Issuance Detail Report, Stock Issuance Report against Requisition No. (Standard &amp; Date-wise), Item-Wise &amp; Job/Work-Order-Wise Stock Issue Detail, Issued Stock Return Report, Daily/Date-Range Purchase Orders Register, Item-Wise <code>GRN</code> Printing, Purchase Return to Supplier Report, Vendor Payment Due Report, Store/Warehouse-Wise Live Stock Status, Category/Item/Size-Wise Stock Status, and Total Stock Valuation Report.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-12">
+        <div class="module-card-header" onclick="toggleModule('module-12')">
+            <div class="module-title-group">
+                <span class="module-badge">🏘️ Society Maintenance</span>
+                <div>
+                    <h3>Housing Society Maintenance, Utility Billing &amp; Facility Management</h3>
+                    <p class="module-subtitle">Manages ongoing post-possession housing society and commercial complex operations: monthly utility/maintenance billing, metered readings, rebates, arrears, bill-to-installment conversions, care alerts, and preventive facility maintenance.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Service Profiling, Cost Centers, Fixed &amp; Metered Utility Billing</h4>
+                    <span class="item-count">14 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Comprehensive Society &amp; Commercial Service Heads:</strong> Configure recurring monthly, quarterly, or one-time service charges across:</li><li class="feature-item"><strong>Security &amp; Guard Services</strong></li><li class="feature-item"><strong>Street Lights &amp; Common Area Power</strong></li><li class="feature-item"><strong>Parks &amp; Horticulture Fee</strong></li><li class="feature-item"><strong>Parking Charges</strong></li><li class="feature-item"><strong>Masjid / Mosque Fund</strong></li><li class="feature-item"><strong>High-Speed Internet / Fiber &amp; Cable TV Charges</strong></li><li class="feature-item"><strong>Lift / Elevator &amp; Escalator Maintenance</strong></li><li class="feature-item"><strong>Garbage Collection, Sanitation &amp; Sewerage</strong></li><li class="feature-item"><strong>Water Supply Charges</strong></li><li class="feature-item"><strong>Electricity Billing (with Slab/Unit Rates &amp; Meter Reading)</strong></li><li class="feature-item"><strong>Miscellaneous Fines, By-Law Violations &amp; Processing Charges</strong></li><li class="feature-item"><strong>Time-Period Service Agreements &amp; Cost Center Mapping:</strong> Attach customized service billing profiles to each member/unit and map revenues/expenses to dedicated <strong>Services Cost Centers</strong>.</li><li class="feature-item"><strong>Fixed vs. Metered Utility Management:</strong> Handle flat plot/apartment size-based monthly maintenance fees alongside variable <strong>Metered Services</strong> (recording previous reading, current reading, units consumed, and unit tariff rates).</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Bulk Bill Generation, Rebates, Arrears, Bill Installments &amp; Billing Reports</h4>
+                    <span class="item-count">11 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Automated Monthly Bill Run, Finalization &amp; Reversal:</strong></li><li class="feature-item">Generate monthly utility and maintenance bills in bulk for the entire society, block-wise, floor-wise, or for an individual Shop/Office/House.</li><li class="feature-item">Support pre-finalized bill review, <strong>Bill Regeneration</strong>, <strong>Bill Finalization</strong>, and controlled <strong>Bill Reversal after Finalization</strong>.</li><li class="feature-item">Batch-print maintenance bills sorted by block, street, or due date.</li><li class="feature-item"><strong>Maintenance Receipts, Auto-Arrears Rollover &amp; LPS:</strong></li><li class="feature-item">Collect full, partial, or advance bill payments via Cash, Bank, Online, or PDC with instant receipt printing.</li><li class="feature-item">Automatically apply <strong>Late Payment Surcharge (LPS)</strong> after the bill due date and roll unpaid balances into the following month&#x27;s bill as <strong>Arrears</strong>.</li><li class="feature-item"><strong>Rebates &amp; Security Deposit Adjustments:</strong> Grant authorized rebates on maintenance/rental bills (either during billing or at receipt counter) and adjust member Advance/Security Deposits against outstanding receivables.</li><li class="feature-item"><strong>Maintenance Bill-to-Installment Conversion:</strong> Convert high-value utility or arrears bills into monthly installments upon member request, automatically adding the monthly installment slice to future monthly bills.</li><li class="feature-item"><strong>Pop-Up Member Care Alerts:</strong> Attach custom positive or cautionary <strong>Care Alerts</strong> to any Registration No (e.g., <em>&quot;VIP Client&quot;</em>, <em>&quot;Reference of Chairman&quot;</em>, <em>&quot;Chronic Defaulter / Previous Fraud Attempt&quot;</em>) that automatically pop up on screen whenever any staff member opens that account.</li><li class="feature-item"><strong>Maintenance &amp; Utility Billing Reports:</strong> Finalized Bills Receivables Summary, Client-Wise Receivable/Outstanding/Arrears &amp; Ageing Detail Reports, Daily Receipts Summary &amp; Daily Recovery Report, Date-Wise &amp; Payment-Mode-Wise Receiving Detail, Client Bill Status (Summary &amp; Detail), Advance/Adjustment Receiving Report, Electric Bill with Unit Rate Report, and Bills vs. Receipts Comparative Report.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Facility &amp; Preventive Infrastructure Maintenance</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Scheduled, Preventive &amp; Breakdown Maintenance:</strong> Plan and track preventive, routine, and accidental maintenance for society and tower infrastructure (generators, transformers, tube wells, water filtration plants, elevators, HVAC, fire safety systems, and society fleet vehicles).</li><li class="feature-item"><strong>Maintenance Work Orders &amp; Spare Part Costing:</strong> Assign maintenance tickets to internal technicians or external service contractors, issue spare parts from store inventory, and post maintenance costs directly to the relevant property, block, or service cost center.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-13">
+        <div class="module-card-header" onclick="toggleModule('module-13')">
+            <div class="module-title-group">
+                <span class="module-badge">🏢 Tenants &amp; Leasing</span>
+                <div>
+                    <h3>Tenant, Lease, Rental &amp; Commercial Complex Management</h3>
+                    <p class="module-subtitle">Manages rental properties, commercial shopping malls, corporate towers, shop/office/canteen allocations, lease renewals, and security deposit settlements.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Tenant Profiling, Unit Allocation &amp; Lease Agreements</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Tenant &amp; Premises Owner Registry:</strong> Maintain complete profiles of commercial/residential tenants and premises owners, including CNIC/NTN, trade license, emergency contacts, guarantor details, and historical lease performance.</li><li class="feature-item"><strong>Shop / Office / Apartment Allocation &amp; De-Allocation:</strong></li><li class="feature-item">Allocate vacant shops, offices, kiosks, food-court canteens, or apartments to registered tenants upon contract signing.</li><li class="feature-item">Execute formal <strong>De-Allocation</strong> at lease expiry or early termination, tracking leaving clients&#x27; clearance and handover inspection status.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Automated Rent Invoicing, Security Deposits &amp; Occupancy Analytics</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>One-Time Security Deposits &amp; Recurring Rent Schedules:</strong> Record refundable security deposits/advances and configure automated monthly/quarterly rent and common-area-maintenance (CAM) invoicing with due-date reminders and annual rent escalation rules.</li><li class="feature-item"><strong>Multi-Unit Commercial Rent Allocation:</strong> Allocate a single tenant payment receipt across multiple rented shops, offices, or canteens.</li><li class="feature-item"><strong>Lease Renewal, Termination &amp; Eviction Workflows:</strong> Trigger automated alerts prior to lease expiry, process lease renewals with revised rent terms, manage eviction notices, and calculate net security deposit refunds after deducting unpaid bills or property damages.</li><li class="feature-item"><strong>Vacancy, Occupancy &amp; Tenant Reports:</strong> Real-time <strong>Vacant vs. Booked/Rented Shop, Office &amp; Apartment Reports</strong>, Premises Owner &amp; Tenant Information Directory, Unit Allocation &amp; De-Allocation History Report, and <strong>Leaving Clients Detail &amp; Payment Clearance Status Reports</strong>.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-14">
+        <div class="module-card-header" onclick="toggleModule('module-14')">
+            <div class="module-title-group">
+                <span class="module-badge">📱 Helpdesk &amp; Portals</span>
+                <div>
+                    <h3>Member Communications, Complaint Helpdesk, Self-Service Portals &amp; Mobile Apps</h3>
+                    <p class="module-subtitle">Manages official society correspondence, member meetings, event-driven SMS/Email notifications, field-service complaint ticketing, customer web portals, and dedicated Android/iOS mobile applications.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Official Society Letter Suite &amp; Member Communications</h4>
+                    <span class="item-count">13 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Automated Society Letter Generator:</strong></li><li class="feature-item"><strong>Welcome Letter</strong> (upon booking/registration)</li><li class="feature-item"><strong>Confirmation Charges Letter</strong></li><li class="feature-item"><strong>Current Due Installment Letter</strong></li><li class="feature-item"><strong>Previous Due / Overdue Installment Reminder Letter</strong></li><li class="feature-item"><strong>Balloting Invitation &amp; Result Letter</strong></li><li class="feature-item"><strong>Allotment Letter</strong></li><li class="feature-item"><strong>Possession Readiness &amp; Handover Letter</strong></li><li class="feature-item"><strong>Monthly Maintenance &amp; Utility Bill Letter</strong></li><li class="feature-item"><strong>Cancellation / Termination Letter</strong></li><li class="feature-item">Includes automated <strong>Envelope Printing</strong> with formatted postal dispatch address boxes.</li><li class="feature-item"><strong>Member Invitations &amp; AGM/Committee Meetings:</strong> Manage member directories, dispatch official invitations, and log society general body or committee meetings.</li><li class="feature-item"><strong>Event-Driven SMS &amp; Email Notification Engine:</strong> Automatically dispatch transactional SMS and Email alerts on every account event (booking confirmation, payment receipt, cheque clearance/bounce, installment due reminder, balloting result, transfer initiation, and complaint status updates).</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Member Application &amp; File Request Workflow (<code>Application Management</code>)</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Financial &amp; Non-Financial Member Requests:</strong> Log and print formal member applications (submitted at the front desk or via the Customer Mobile App/Portal) for any financial or administrative request (e.g., installment rescheduling, name/address correction, duplicate document issuance, plot merge, NOC request).</li><li class="feature-item"><strong>In-Process Application Dashboard &amp; Multi-Tier Approvals:</strong> Monitor all open member applications on a live dashboard, route across departments for multi-management approvals and written remarks, and print final approved orders.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Complaint &amp; Helpdesk Ticketing System (Web + Mobile + Field Visit Planner)</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Omni-Channel Complaint Registration:</strong> Residents and customers can log complaints via the <strong>Customer Mobile App</strong>, <strong>Online Portal</strong>, <strong>Email</strong>, <strong>Walk-In Helpdesk</strong>, or <strong>Accountless Web Ticket</strong> (using Ticket ID + Email), complete with <strong>Photo Attachments</strong> and categorized <strong>Help Topics</strong> (Plumbing, Electrical, Security, Sanitation, Billing, Civil).</li><li class="feature-item"><strong>Auto-Routing, Canned Replies &amp; Internal Staff Notes:</strong> Automatically route tickets to the responsible manager/department without exposing internal complexity to the resident; send automated acknowledgment emails, utilize predefined <strong>Canned FAQ Replies</strong>, and record private <strong>Staff-Only Internal Notes</strong>.</li><li class="feature-item"><strong>Site Visit Planner &amp; Mandatory Customer Resolution Sign-Off:</strong></li><li class="feature-item">End-to-end resolution workflow: Complaint Initiation $\rightarrow$ Technician Allocation $\rightarrow$ <strong>Site Visit Planner &amp; Customer Visit Confirmation</strong> $\rightarrow$ Complaint Response Dashboard $\rightarrow$ On-Site Rectification (with store part consumption &amp; billing if out-of-warranty) $\rightarrow$ <strong>Mandatory Customer Resolution Confirmation</strong> in the app before the ticket can be closed.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Customer / Member Self-Service Web Portal &amp; Mobile App</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Unified Property &amp; Portfolio Dashboard:</strong> Customers log in via Web or Android/iOS App to view all their booked files, plots, apartments, and shops in one place.</li><li class="feature-item"><strong>Live Installment Plan, Ledger &amp; Bill Viewing:</strong> View complete installment schedules (<code>Down Payment, Allotment, Installment #</code>), total amount vs. recovered amount, full General Ledger statement, and monthly utility/maintenance bills with late payment charges.</li><li class="feature-item"><strong>Online Payments &amp; Instant Payment Proof Upload:</strong> Pay installments or maintenance bills directly via <strong>Credit/Debit Card or IBFT</strong>, or upload bank transfer receipts from the mobile app (linked directly to the Accounts dashboard for verification and receipt issuance).</li><li class="feature-item"><strong>Digital KYC Upload, Service Applications &amp; Complaint Tracking:</strong> Submit KYC documents online, initiate and track formal society applications, log maintenance complaints with photos, confirm technician site visits, and approve completed complaint resolutions.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Management ERP Mobile App &amp; Employee Self-Service (ESS) App</h4>
+                    <span class="item-count">7 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>ERP Main Mobile App (for Executives, Sales &amp; Field Staff):</strong></li><li class="feature-item"><strong>Executive Mobile Dashboard:</strong> Live KPI counters (<code>Leads, Opportunities, Today&#x27;s Tasks, Tomorrow&#x27;s Tasks, Pending Tasks, Pending Approvals</code>) and quick activity tabs (<code>Today, Email, Call, Visit, Survey</code>).</li><li class="feature-item"><strong>Mobile Approvals &amp; Biometrics:</strong> Approve accounting vouchers, approve plot ownership transfers, capture/verify <strong>New Customer Biometrics</strong> in the field, manage CRM leads/opportunities, generate sales orders/invoices, and update field complaint tickets.</li><li class="feature-item"><strong>Employee Self-Service (ESS) Web &amp; Mobile App:</strong></li><li class="feature-item">Check daily/monthly attendance logs, view leave balances, apply for leaves, and approve/reject subordinate leave requests.</li><li class="feature-item">Submit <strong>Staff Loan</strong>, <strong>Salary Advance</strong>, <strong>Accommodation</strong>, and <strong>Expense Reimbursement</strong> applications.</li><li class="feature-item">View and print monthly <strong>Salary Slips</strong>, assigned company assets, and assigned tasks.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-15">
+        <div class="module-card-header" onclick="toggleModule('module-15')">
+            <div class="module-title-group">
+                <span class="module-badge">💰 Accounts &amp; Finance</span>
+                <div>
+                    <h3>Accounts, Finance, Taxation &amp; Fixed Assets Management</h3>
+                    <p class="module-subtitle">Manages multi-branch real estate and construction accounting, hierarchical Chart of Accounts, voucher workflows, automated cheque printing, bank reconciliation, statutory taxation (FBR, ZATCA, Property Tax), third-party ERP connectors, and fixed asset lifecycles.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Multi-Level Chart of Accounts (COA) &amp; Multi-Branch Project Accounting</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Configurable Multi-Level Chart of Accounts:</strong></li><li class="feature-item">Support flexible 3-, 4-, and 5-level COA hierarchies (e.g., Level 1: <em>Assets</em> $\rightarrow$ Level 2: <em>Current Assets</em> $\rightarrow$ Level 3: <em>Bank/Cash/Receivables</em> $\rightarrow$ Level 4/5: <em>Posting GL / Party Accounts</em> such as <code>1-00-00-000-0000</code>) plus additional MIS reporting dimensions.</li><li class="feature-item">Share a unified Chart of Accounts across <strong>Multi-Branch &amp; Multi-Project Operations</strong> while generating separate <strong>Branch-Wise, Project-Wise, Phase-Wise, and Cost-Center-Wise Income Statements (P&amp;L)</strong>.</li><li class="feature-item"><strong>GL / Party Account Controls:</strong> Set account opening dates, account classifications, minimum and maximum balance limits, and linked vendor/customer contact details.</li><li class="feature-item"><strong>Financial Year &amp; Posting Period Management:</strong> Define active/closed financial years per branch, carry forward closing balances as opening balances in the new fiscal year, and auto-reset voucher serial numbering annually.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Voucher Lifecycle, Cheque Printing &amp; Bank Reconciliation</h4>
+                    <span class="item-count">14 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Complete Accounting Voucher Suite:</strong></li><li class="feature-item"><strong>CRV / CR</strong> — Cash Receipt Voucher</li><li class="feature-item"><strong>CPV / CP</strong> — Cash Payment Voucher</li><li class="feature-item"><strong>BRV / BR</strong> — Bank Receipt Voucher</li><li class="feature-item"><strong>BPV / BP</strong> — Bank Payment Voucher</li><li class="feature-item"><strong>PBRV</strong> — Post-Dated Bank Receipt Voucher</li><li class="feature-item"><strong>PBPV</strong> — Post-Dated Bank Payment Voucher</li><li class="feature-item"><strong>JV</strong> — Journal Voucher &amp; <strong>Petty Cash / Temporary Payment Vouchers</strong></li><li class="feature-item"><strong>Two-Stage Voucher Review, Bulk Posting &amp; Supervisor Control:</strong></li><li class="feature-item">Support auto-generated or manual voucher serial numbers, auto-populated contra entries, and pre-finalized voucher printing.</li><li class="feature-item">Review vouchers one-by-one on screen or execute <strong>One-Step Bulk Voucher Finalization/Posting</strong> and range-wise/bulk printing.</li><li class="feature-item">Enforce strict role-based permissions and supervisor control over any post-posting voucher amendments or deletions, backed by a self-data audit and financial rectification engine.</li><li class="feature-item"><strong>Multi-Parameter Voucher &amp; GL Inquiry:</strong> Search un-editable voucher registries by User, Voucher Type, Date Range, Amount, Narration/Remarks, Created By, Posted By, or Cheque/Reference Number.</li><li class="feature-item"><strong>Automated Cheque Printing &amp; Bank Reconciliation:</strong> Print bank cheques directly from payment vouchers, manage security deposits/retentions, maintain daily Cash Books and Bank Books, and perform automated or manual <strong>Bank Reconciliation</strong>.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Statutory Taxation, ERP Connectors &amp; Financial Statements</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Tax Authority &amp; Withholding Compliance:</strong></li><li class="feature-item">Built-in integration with government tax portals including <strong>FBR (Pakistan)</strong> and <strong>ZATCA (Saudi Arabia)</strong>.</li><li class="feature-item">Automated calculation and deduction of <strong>Withholding Taxes</strong> (on vendor payments, contractor bills, commissions, and profit disbursements) and <strong>Property Tax Management</strong>.</li><li class="feature-item"><strong>Enterprise Third-Party ERP Connectors:</strong> Native API connectors to synchronize real estate CRM/sales/collection data with <strong>SAP</strong>, <strong>Microsoft Dynamics</strong>, <strong>Oracle</strong>, and <strong>Accountify</strong>.</li><li class="feature-item"><strong>Standard Financial &amp; MIS Reports:</strong> Chart of Accounts &amp; Posting Accounts Master List, General Ledger / Account Statement, Customer &amp; Supplier/Party Ledgers, Cash Book, Bank Book, Day Book, Transaction Journal, 2-Column / 3-Column / 4-Column Trial Balance (All Levels — Opening, Debit, Credit, Closing), Financial Accounts Activity &amp; Dormant Accounts Report, Accounts Receivable &amp; Payable Ageing (<code>30 / 60 / 90 / 120+ Days</code>), Balance Sheet with Detailed Notes, Profit &amp; Loss Statement, and Cash Flow Statement.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Fixed Assets Lifecycle Management</h4>
+                    <span class="item-count">6 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Asset Master, Barcode/RFID Labeling &amp; Capitalization:</strong> Define fixed assets, capitalize completed construction work orders into fixed assets, initialize accounting values, and print <strong>Barcode / RFID Asset Register Labels</strong>.</li><li class="feature-item"><strong>Automated Depreciation Engine:</strong> Configure depreciation methods/rates and auto-post periodic depreciation vouchers to the General Ledger.</li><li class="feature-item"><strong>Employee &amp; Multi-Level Location Asset Allocation:</strong></li><li class="feature-item"><strong>Employee Allocation Workflow:</strong> Asset Request $\rightarrow$ Allocation to Employee $\rightarrow$ Approval $\rightarrow$ Asset Return on transfer/clearance.</li><li class="feature-item"><strong>7-Level Location Allocation Workflow:</strong> Asset Request $\rightarrow$ Allocation across a 7-Level Spatial Hierarchy (Project $\rightarrow$ Building $\rightarrow$ Floor $\rightarrow$ Room/Site) $\rightarrow$ Live Asset Tracking $\rightarrow$ Inter-Location Re-Allocation/Transfer.</li><li class="feature-item"><strong>Asset Maintenance &amp; Disposal:</strong> Track scheduled/preventive/accidental asset maintenance and execute formal <strong>Asset Disposal / Write-Off</strong> workflows.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-16">
+        <div class="module-card-header" onclick="toggleModule('module-16')">
+            <div class="module-title-group">
+                <span class="module-badge">👥 HR &amp; Payroll</span>
+                <div>
+                    <h3>Human Resource Management (HRM), Biometric/Facial Attendance &amp; Payroll</h3>
+                    <p class="module-subtitle">Manages the complete employee lifecycle, staff accommodations, disciplinary/legal cases, facial recognition and biometric attendance, leave quotas, staff loans/advances, and automated monthly payroll.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>360° Employee Lifecycle &amp; HR Administration</h4>
+                    <span class="item-count">4 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Comprehensive Personnel Profile:</strong> Capture Personal Info, Photograph, Employee ID, Father/Spouse Name, CNIC, DOB, Marital Status, Nationality, Contact Details, Joining &amp; Confirmation Dates, Branch/Department/Designation, <strong>Academic Record History</strong> (Degrees, Year, Institute, GPA/Awards), <strong>Past Work Experience</strong>, <strong>Trainings &amp; Certifications</strong>, <strong>Languages &amp; Skills</strong>, <strong>Dependent Details</strong>, <strong>Multiple Reference Checks</strong>, <strong>Extra Activities</strong>, and <strong>Scanned Digital HR Documents</strong>.</li><li class="feature-item"><strong>Career Progression &amp; Mobility:</strong> Manage Recruitment, Onboarding, Job Assignments, Inter-Department/Branch <strong>Transfers &amp; Postings</strong>, <strong>Promotions &amp; Demotions</strong>, <strong>Salary Increments</strong>, and <strong>Goal-Based Performance Evaluations</strong>.</li><li class="feature-item"><strong>Staff Accommodation Management:</strong> Allocate and track company/society residential quarters, hostels, or site accommodations assigned to employees.</li><li class="feature-item"><strong>Disciplinary Proceedings &amp; HR Legal/Litigations:</strong> Record show-cause notices, inquiries, disciplinary actions, and labor court/legal litigation histories.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Facial Recognition (<code>GPOS</code>) &amp; Biometric Attendance &amp; Leave Management</h4>
+                    <span class="item-count">7 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Facial Recognition &amp; Fingerprint Hardware Integration:</strong> Connect directly to <strong>GPOS Facial Recognition terminals</strong> and <strong>Biometric Fingerprint Clocks</strong> to capture real-time employee check-in/check-out and prevent payroll fraud.</li><li class="feature-item"><strong>Multi-Shift, Grace Time &amp; Overtime Engine:</strong></li><li class="feature-item">Configure multiple shifts, grace periods, total working hours, automatic <strong>Half-Day marking</strong>, <strong>Late Arrival / Early Leaving</strong> hours, and <strong>Overtime calculations</strong>.</li><li class="feature-item">Track <strong>Official Duty / Field Visits</strong> and authorized <strong>Special Favor</strong> attendance waivers.</li><li class="feature-item"><strong>Configurable Leave Quotas &amp; Carry-Forward (<code>Arrears Leave</code>):</strong></li><li class="feature-item">Define Casual, Medical, Annual, Hajj/Umrah, Maternity, and Leave Without Pay (LWOP) quotas based on annual, event-based, or gender-based rules.</li><li class="feature-item">Track <strong>Arrears Leave (carry-forward balances)</strong>, current year entitlement, availed leaves, and remaining balances with manager approval workflows.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Staff Loans, Advances, Reimbursements &amp; Payroll Processing</h4>
+                    <span class="item-count">8 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Staff Loan &amp; Salary Advance Management:</strong></li><li class="feature-item">Sanction <strong>Personal Loans</strong>, <strong>Marriage Loans</strong>, <strong>Car/Motorcycle Loans</strong>, and short-term <strong>Salary Advances</strong>.</li><li class="feature-item">Configure loan sanction date, total amount, monthly installment deduction amount, <strong>Deduct/Pause Loan Flag</strong>, and ad-hoc monthly loan adjustments.</li><li class="feature-item"><strong>Automated Monthly Payroll, Accrual &amp; Auto-Emailed Payslips:</strong></li><li class="feature-item"><strong>Configurable Earnings Heads:</strong> Basic Salary, House Rent Allowance (HRA), Utilities, Medical, Conveyance, Overtime, Expense Reimbursements, and Sales Commissions.</li><li class="feature-item"><strong>Configurable Deduction Heads:</strong> Income Tax, Provident Fund / EOBI, Staff Loan Installments, Salary Advances, Leave Without Pay (LWOP) deductions, and Special Deductions.</li><li class="feature-item"><strong>Accounting Integration:</strong> Automatically post <strong>Payroll Accrual Vouchers</strong> and <strong>Salary Disbursement Vouchers</strong> into the General Ledger.</li><li class="feature-item"><strong>Outputs:</strong> Generate Department-Wise Salary Sheets, Bank Transfer Advices, and multi-signatory <strong>Salary Slips</strong> (<em>Prepared By, Finance Manager, Chief Executive</em>) with <strong>Automated Email Dispatch of Payslips</strong> to all employees.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-17">
+        <div class="module-card-header" onclick="toggleModule('module-17')">
+            <div class="module-title-group">
+                <span class="module-badge">📊 DMS, BI &amp; Audit</span>
+                <div>
+                    <h3>Document Management (DMS E-Library), Task Management, BI Analytics &amp; Forensic Security</h3>
+                    <p class="module-subtitle">Covers centralized paperless document archiving, organizational goal/task tracking, 14-metric area-vs-unit executive analytics, cloud/offline deployment, role-based access control, and tamper-proof forensic audit trails.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Document Management System (DMS / Digital E-Library)</h4>
+                    <span class="item-count">2 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Centralized Paperless E-Library:</strong> Digitally scan, categorize, and archive property title deeds, Mouza/Khasra mutation records, customer CNICs, biometric certificates, sale agreements, allotment letters, transfer deeds, NOCs, architectural drawings, and HR contracts with unique Document IDs and unlimited storage to protect against physical loss, theft, or fire.</li><li class="feature-item"><strong>Entity Linking, Version Control &amp; Expiry Reminders:</strong> Link documents directly to Property, Customer, Booking (<code>CC#</code>), Lease, Vendor, or Voucher records; maintain document version histories, enforce role-based view/download permissions, and trigger <strong>Automated Document Expiry Alerts</strong> (for licenses, leases, and vendor contracts).</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Task &amp; Goal Management System</h4>
+                    <span class="item-count">1 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Organizational Goals &amp; Actionable Tasks:</strong> Define company, project, and departmental goals; assign granular tasks with deadlines to staff members; and monitor completion progress across web and mobile dashboards.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Executive Dashboards, Area-vs-Unit Analytics &amp; Business Intelligence (BI)</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Multi-Level Real-Time Dashboards:</strong> Dedicated visual command centers for <strong>Society Overview</strong>, <strong>Area / Block</strong>, <strong>Tower / Floor</strong>, <strong>Property Inventory</strong>, <strong>Sales &amp; Recovery</strong>, <strong>Construction Budget vs. Actual Variance</strong>, <strong>Utility/Maintenance Services</strong>, and <strong>Membership</strong>.</li><li class="feature-item"><strong>14-Metric Area-Based &amp; Unit-Based Project Summary Engine:</strong></li><li class="feature-item">Solves the builder challenge where unit counts alone distort progress when shops, offices, and apartments vary in square footage.</li><li class="feature-item">Computes floor-by-floor and category-by-category (<code>Flat</code>, <code>Office</code>, <code>Plot</code>, <code>Shop</code>, plus <code>All Project Total</code>) across <strong>14 simultaneous metrics</strong>: <code>Floor / Category</code>, <code>Total Units</code>, <code>Sold Units</code>, <code>Remaining Units</code>, <code>Total Area (Sq.Ft)</code>, <code>Sold Area (Sq.Ft)</code>, <code>Remaining Area (Sq.Ft)</code>, <code>Total Inventory Value</code>, <code>Net Sales Price (Sold Value)</code>, <code>Remaining Unsold Value</code>, <code>Total Received Amount</code>, <code>% Received (Cash Collected vs. Sold Value)</code>, <code>% Sold (by Floor Area Sq.Ft)</code>, and <code>Average Selling Rate per Sq.Ft</code>.</li><li class="feature-item"><strong>Enterprise Data Warehousing, OLAP &amp; Exportable Reports:</strong> Metric-driven data marts, ETL pipelines, OLAP multi-dimensional analysis, custom report builders, and 200+ standard operational reports with one-click export to <strong>Excel</strong>, <strong>CSV</strong>, <strong>PDF</strong>, and <strong>HTML</strong>.</li>
+                </ul>
+            </div>
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Deployment Architecture, RBAC, Hardware Licensing &amp; Immutable Forensic Audit Trail</h4>
+                    <span class="item-count">9 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Flexible Cloud &amp; 100% Offline Deployment Models:</strong></li><li class="feature-item"><strong>Cloud / Web-Based Architecture:</strong> Hosted on Microsoft Azure or Tier-4 Linux/Windows Data Centers with SSL encryption, multi-branch synchronization, and automated daily off-site backups.</li><li class="feature-item"><strong>100% Offline Local Architecture with Hardware-Locked Licensing:</strong> Option for zero-internet local database deployment where each license is cryptographically bound to the host machine&#x27;s hardware identifiers, eliminating external network attack surfaces.</li><li class="feature-item"><strong>Granular Role-Based Access Control (RBAC) &amp; Security Policies:</strong></li><li class="feature-item">Action-level permissions (<em>View, Add, Edit, Delete, Print, Approve, Post, Un-Post</em>) configurable per user role (<em>System Admin, General Manager, Sales Manager, Sales Agent, Leasing Manager, Accountant, Storekeeper, Maintenance Staff, HR Officer, Customer/Tenant</em>).</li><li class="feature-item">Enforce <strong>Back-Dated Entry &amp; Edit Restrictions</strong>, <strong>IP-Based Login Whitelisting</strong>, password complexity/expiry rules, and <strong>Two-Factor Authentication (2FA / OTP)</strong>.</li><li class="feature-item"><strong>Immutable Forensic Audit Trail:</strong></li><li class="feature-item">Permanent, tamper-proof forensic log of all high-risk administrative actions that <strong>cannot be deleted or altered by any staff member or even the system owner</strong>.</li><li class="feature-item">Records <code>Audit ID</code>, <code>Receipt / File CC#</code>, <code>Unit No</code>, <code>Client Name</code>, <code>Action Type</code> (<em>Edited, Voided, Transferred, Cancelled, Rescheduled</em>), <code>Old Value (Amount/Bank/Owner)</code>, <code>New Value (Amount/Bank/Owner)</code>, <code>Mandatory Remarks</code>, <code>Exact Timestamp</code>, and <code>Operator/Admin ID</code> across:</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+    <article class="module-card collapsed searchable-section" id="module-18">
+        <div class="module-card-header" onclick="toggleModule('module-18')">
+            <div class="module-title-group">
+                <span class="module-badge">🌐 Verticals &amp; Pricing</span>
+                <div>
+                    <h3>Complementary Enterprise Verticals &amp; Market Pricing Benchmarks</h3>
+                    <p class="module-subtitle">Additional integrated modules for developers and housing societies operating their own logistics fleets, retail outlets, workshops, community clinics, or investment schemes, along with standard market pricing and delivery benchmarks.</p>
+                </div>
+            </div>
+            <button class="collapse-btn" aria-label="Toggle section">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+        </div>
+        <div class="module-card-body">
+            
+            <div class="submodule-card searchable-block">
+                <div class="submodule-header">
+                    <span class="submodule-dot"></span>
+                    <h4>Complementary Enterprise Verticals for Large Real Estate Groups</h4>
+                    <span class="item-count">5 capabilities</span>
+                </div>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Bulk Logistics &amp; Construction Fleet Management:</strong> Manage company-owned and third-party dumpers, mixers, excavators, and transport vehicles across <strong>Transport Orders</strong>, <strong>Trip Scheduling</strong>, <strong>Trip Stages</strong>, <strong>Driver Allocation</strong>, <strong>Fueling Logs</strong>, <strong>Trip Advances</strong>, <strong>Route Expenses</strong>, and <strong>Vehicle Checklists</strong>.</li><li class="feature-item"><strong>Point of Sale — Online &amp; Offline POS:</strong> Barcode-enabled retail billing, receipt printing, returns, and <strong>Offline POS Mode</strong> (with auto-sync when internet restores) for housing society supermarkets, community clubs, restaurants, and pharmacies.</li><li class="feature-item"><strong>Auto Workshop &amp; Machinery Maintenance System:</strong> Track society/construction vehicle visit histories, one-click repair operation histories, automated spare-part selection per maintenance operation, job cards, and multi-store spare-parts inventory.</li><li class="feature-item"><strong>Real Estate Investment &amp; Savings Certificate System:</strong> Manage fixed-term and periodic-return investment certificates (<em>6-Month, 3-Year, 5-Year Monthly Income, and 10-Year Maturity Certificates</em>) across configurable denominations with automated <strong>10% Withholding Tax Deduction at Source</strong> on profit payouts and automated reinvestment rules.</li><li class="feature-item"><strong>Community Healthcare / Clinic Management (<code>Clinic Plus</code>):</strong> Manage society hospitals and community clinics covering <strong>Patient MR# Registration &amp; Card Printing</strong>, <strong>Doctor Appointments &amp; Automated 3-Day Email Reminders</strong>, <strong>Intelligent Queue Management</strong>, <strong>Clinical EMR (Vitals, BP/Glucose Graphical Charting, Prescriptions)</strong>, <strong>Laboratory (Pathology, Biochemistry, Hematology, Radiology)</strong>, <strong>Pharmacy Inventory &amp; POS</strong>, and <strong>Cashier Daily Income Reports</strong>.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </article>
+    
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleModule(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle("collapsed");
+        }
+
+        function openAndScrollToModule(event, id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove("collapsed");
+            }
+        }
+
+        function expandAll(expand) {
+            document.querySelectorAll(".module-card").forEach(card => {
+                if (expand) card.classList.remove("collapsed");
+                else card.classList.add("collapsed");
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById("themeBtn");
+            if (body.getAttribute("data-theme") === "light") {
+                body.removeAttribute("data-theme");
+                btn.textContent = "☀️ Light Mode";
+            } else {
+                body.setAttribute("data-theme", "light");
+                btn.textContent = "🌙 Dark Mode";
+            }
+        }
+
+        function filterContent() {
+            const query = document.getElementById("searchInput").value.trim().toLowerCase();
+            const modules = document.querySelectorAll(".module-card");
+
+            modules.forEach(mod => {
+                if (!query) {
+                    mod.classList.remove("hidden-by-search");
+                    mod.querySelectorAll(".submodule-card, .feature-item").forEach(el => el.classList.remove("hidden-by-search"));
+                    return;
+                }
+
+                let modMatches = false;
+                const modHeader = mod.querySelector(".module-card-header").innerText.toLowerCase();
+                if (modHeader.includes(query)) modMatches = true;
+
+                const subCards = mod.querySelectorAll(".submodule-card");
+                subCards.forEach(sub => {
+                    let subMatches = false;
+                    const subTitle = sub.querySelector(".submodule-header").innerText.toLowerCase();
+                    if (subTitle.includes(query)) subMatches = true;
+
+                    const items = sub.querySelectorAll(".feature-item");
+                    items.forEach(item => {
+                        if (item.innerText.toLowerCase().includes(query) || subTitle.includes(query) || modHeader.includes(query)) {
+                            item.classList.remove("hidden-by-search");
+                            subMatches = true;
+                        } else {
+                            item.classList.add("hidden-by-search");
+                        }
+                    });
+
+                    if (subMatches) {
+                        sub.classList.remove("hidden-by-search");
+                        modMatches = true;
+                    } else {
+                        sub.classList.add("hidden-by-search");
+                    }
+                });
+
+                if (modMatches) {
+                    mod.classList.remove("hidden-by-search");
+                    mod.classList.remove("collapsed");
+                } else {
+                    mod.classList.add("hidden-by-search");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
